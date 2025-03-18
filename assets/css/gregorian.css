@@ -1,0 +1,21 @@
+.btn-primario{
+    background-color: #4CAF50;
+    color: #fff;
+}
+
+.btn-primario:hover{
+    background-color: #388E3C;
+    color: #fff;
+}
+
+.sombra{
+    box-shadow: 0px 0px 30px #C8E6C9 ;
+}
+
+.text-principal{
+    color: #212121;
+}
+
+.text-secundario{
+    color: #757575
+}
