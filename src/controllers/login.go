@@ -20,6 +20,7 @@ func FazerLogin(w http.ResponseWriter, r *http.Request) {
 	err := json.NewDecoder(r.Body).Decode(&loginRequestDTO)
 	if err != nil {
 		respostas.JSON(w, http.StatusInternalServerError, respostas.ErroAPI{Erro: err.Error()})
+		return
 	}
 
 	//Cria uma json com loginRequestDTO

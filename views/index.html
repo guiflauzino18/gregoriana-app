@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gregorian - Home</title>
+    {{template "styles"}}
+</head>
+<body>
+    <!-- Header -->
+    {{template "header" .Usuario}}
+
+    <!-- Sidenar -->
+    {{template "sidebar" .URL}}
+
+    <main class="main sb-oculta-main">
+
+        <!-- Titulo -->
+        <div class="row page-title">
+            <h2 class="cor-titulo">Página Inicial</h2>
+            <p>Bem-vindo ao Gregorian, {{.Usuario.Nome}}!</p>
+        </div>
+
+        <!-- Cards -->
+        <section class="section">
+            <div class="row">
+                <div class="col-xs-12 col-md-3">
+                    <div class="card">
+                        <div class="card-header">
+                          Atendimento
+                        </div>
+                        <div class="card-body card-modulos-body">
+                          <!-- <h5 class="card-title">Special title treatment</h5> -->
+                          <p class="card-text">Cadastre e edite pacientes ou inicie atendimentos.</p>
+                          <a href="#" class="botao botao-primario btn-acesse" data-modulo="atendimento">Acesse</a>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-xs-12 col-md-3">
+                    <div class="card">
+                        <div class="card-header">
+                          Agendamento
+                        </div>
+                        <div class="card-body card-modulos-body">
+                          <!-- <h5 class="card-title">Special title treatment</h5> -->
+                          <p class="card-text">Visualize, gerencie e agende agendamentos dos pacientes.</p>
+                          <a href="#" class="botao botao-primario btn-acesse"data-modulo="agendamento">Acesse</a>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-xs-12 col-md-3">
+                    <div class="card">
+                        <div class="card-header">
+                          Faturamento
+                        </div>
+                        <div class="card-body card-modulos-body">
+                          <!-- <h5 class="card-title">Special title treatment</h5> -->
+                          <p class="card-text">Visualize e gerencie seua faturamentos</p>
+                          <a href="#" class="botao botao-primario btn-acesse"data-modulo="faturamento">Acesse</a>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-xs-12 col-md-3">
+                    <div class="card">
+                        <div class="card-header">
+                          Configuração
+                        </div>
+                        <div class="card-body card-modulos-body">
+                          <!-- <h5 class="card-title">Special title treatment</h5> -->
+                          <p class="card-text">Cadastre e edite pacientes ou inicie atendimentos.</p>
+
+                          <a href="#" class="botao botao-primario btn-acesse" data-modulo="configuracao">Acesse</a>
+                        </div>
+                      </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    {{template "footer"}}
+    
+    {{template "scripts"}}
+    <script src="assets/js/index.js"></script>
+</body>
+</html>

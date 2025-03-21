@@ -1,3 +1,106 @@
+:root{
+    --color-primary: #4CAF50;
+    --color-primary-dark: #388E3C;
+    --color-primary-black: #212121;
+    --color-light: #a1f3a4;
+    --color-secondary: #BDBDBD;
+    --color-text-primary: #212121;
+    --color-text-secondary: #757575;
+    --color-text-botao: #FFF;
+
+    --font-familly-titulo: 'georgia', 'avenir', 'avenir-light', 'arial';
+    --font-familly-paragrafo: 'avenir', 'avenir-light', 'arial';
+
+    --bs-btn-close-color: var(var(--color-text-botao))
+}
+
+#modal-usuarios{
+    --bs-modal-color: #FFF;
+    --bs-modal-bg: #3b3434;
+}
+
+input:focus{
+
+    border-color: var(--color-light);
+}
+.card-modulos-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 30vh;
+}
+
+.botao{
+    padding: 0.75rem 0.375rem;
+    margin: 0.25rem;
+    background: transparent;
+    font-weight: 500;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    border: none;
+}
+
+input[type=checkbox]:checked{
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.botao-primario{
+    background: var(--color-primary);
+    color: var(--color-text-botao);
+}
+
+.botao-secundario{
+    background-color: var(--color-secondary);
+    color: var(--color-text-botao);
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: var(--font-familly-titulo);
+    color: var(--color-primary);
+}
+
+.cor-titulo{
+    color: var(--color-primary);
+}
+
+p{
+    font-family: var(--font-familly-paragrafo);
+}
+
+section {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    margin: 5px;
+}
+
+main {
+    background-color: #f0f7f0;
+    padding: 15px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    margin-left: 285px;
+    transition: 0.5s;
+}
+
+.header{
+    background-color: #212121;
+    padding: 0px 10px;
+    height: 70px;
+    padding: 0px 20px;
+}
+
+.page-title{
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+}
+
 .btn-primario{
     background-color: #4CAF50;
     color: #fff;
@@ -18,4 +121,97 @@
 
 .text-secundario{
     color: #757575
+}
+
+.text-white{
+    color: #fff;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+footer{
+    flex-wrap: nowrap;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.sidebar{
+    height: 100vh;
+    width: 285px;
+    position: fixed;
+    top: 0px;
+    left: 0;
+    background-color: #212121;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-y: auto;
+    transition: 0.5s;
+}
+
+.sb-itens{
+    transition: 0.3s;
+    flex: 1;
+}
+
+.sb-itens > ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    font-size: large;
+}
+
+.sb-itens > ul > li {
+    padding: 5px;
+}
+
+.sb-itens > ul > li > a:hover {
+    color: #388E3C;
+}
+
+.sb-itens > ul > li > a{
+    color: #fff;
+    text-decoration: none;
+}
+
+.sb-header{
+    padding-top: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    margin-right: 5px;
+    text-decoration: none;
+}
+
+.sb-header > * {
+    color: white;
+    text-decoration: none;
+    font-size: 35px;
+}
+
+.sb-footer {
+    flex-shrink: 0;
+}
+
+.sb-oculta{
+    transform: translateX(-245px);
+}
+
+.sb-oculta-main{
+    margin-left: 40px;
+}
+
+.sb-oculta-header{
+    margin-left: 30px;
+}
+
+.sb-oculta-botao{
+
 }

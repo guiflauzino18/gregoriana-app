@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gregorian - Configuração</title>
+    {{template "styles"}}
+</head>
+<body>
+    {{template "header" .Usuario}}
+
+    {{template "sidebar" .URL}}
+
+    <main class="main sb-oculta-main">
+        <!-- titulo -->
+        <div class="row page-title ">
+            <div class="row">
+                <h2 class="cor-titulo">Usuários</h2>
+                <br>
+                <p>Cadastre, edite e visualize usuários do sistema.</p>
+            </div>
+            <div class="row col-md-2">
+                <button class="botao botao-primario" data-bs-toggle="modal" data-bs-target="#modal-usuarios" data-bs-whatever="cadastro">Novo Usuário</button>
+            </div>
+        </div>
+
+        <!-- Table -->
+         <section>
+            <table class="table table-sm">
+            <thead class="thead-light">
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Telefone</th>
+                <th scope="col">E-mail</th>
+                <th scope="col">Login</th>
+                <th scope="col">Grupo</th>
+                <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{range .Usuarios.Content}}
+                <tr>
+                <th scope="row">1</th>
+                <td>{{.Nome}} {{.Sobrenome}}</td>
+                <td>{{.Telefone}}</td>
+                <td>{{.Email}}</td>
+                <td>{{.Login}}</td>
+                <td>{{.Role}}</td>
+                <td><a style="text-decoration: none;" href="#"><i class="ri-more-2-line"></i></a></td>
+                </tr>
+                {{end}}
+            </tbody>
+            </table>
+         </section>
+    </main>
+
+    {{template "modal-usuarios"}}
+
+    {{template "scripts"}}
+    <script src="assets/js/usuario.js"></script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+{{define "sidebar"}}
+
+<div class="sidebar sb-oculta">
+
+    <!-- Cabeçalho -->
+    <div class="sb-header">
+        <a id="sb-hidden" href="#">
+            <i class="ri-menu-unfold-line sb-oculta-botao"></i>
+        </a>
+    </div>
+    
+    <!-- Itens -->
+    {{if eq . "/home"}}
+        {{template "sidebar-menu-index"}}
+
+    {{else if eq . "/"}}
+        {{template "sidebar-menu-index"}}
+
+    {{else if eq . "/configuracao"}}
+        {{template "sidebar-menu-configuracao"}}
+
+    {{else if eq . "/usuarios"}}
+        {{template "sidebar-menu-usuarios"}}
+
+    {{end}}
+
+    <!-- Footer -->
+    <div class="sb-footer">
+        
+        <div>
+            <hr>
+            <a href="#">FOOTER</a>
+        </div>
+    </div>
+</div>
+
+{{end}}

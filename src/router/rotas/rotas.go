@@ -18,6 +18,9 @@ type Rota struct {
 func Configurar(router *mux.Router) *mux.Router {
 	rotas := rotasLogin
 	rotas = append(rotas, rotahome)
+	rotas = append(rotas, rotaconfiguracao)
+	rotas = append(rotas, rotausuarios)
+	rotas = append(rotas, rotaCadastroUsuario)
 
 	for _, rota := range rotas {
 		if rota.RequerAutenticacao { //Se Rota requer Autenticação é chamado um Middleware passando primeiro a autenticação e depois chamando a função

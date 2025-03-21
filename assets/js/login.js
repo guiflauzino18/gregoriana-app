@@ -19,11 +19,12 @@ function logar(e){
     }).then((R) => {
         if (R.status == 403){
             $('#login-erro').removeClass('invisible')
-        }else if (R.status > 400) {
+        }else if (R.status >= 400) {
             console.log("Erro ao fazer requisição à API:\n")
         }else {
             R.text().then((T) => {
                 $('#login-erro').addClass('invisible')
+                window.location.href = "/home"
             })
         }
     })
