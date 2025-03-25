@@ -17,16 +17,16 @@
             <div class="row">
                 <h2 class="cor-titulo">Profissional</h2>
                 <br>
-                <p>Cadastre, edite e visualize usuários do sistema.</p>
+                <p>Cadastre, edite e visualize Profissionais do sistema.</p>
             </div>
             <div class="row col-md-2">
-                <button id="abre-modal-usuarios" class="botao botao-primario" data-bs-toggle="modal" data-bs-target="#modal-usuarios" data-acao="cadastro">Novo Profissional</button>
+                <button id="abre-modal-usuarios" class="botao botao-primario" data-bs-toggle="modal" data-bs-target="#modal-profissional" data-acao="cadastro">Novo Profissional</button>
             </div>
         </div>
 
         <!-- Table -->
          <section>
-            <table class="table table-sm">
+            <table class="table table-sm table-hover table-striped">
             <thead class="thead-light">
                 <tr>
                 <th scope="col">#</th>
@@ -65,10 +65,10 @@
          </section>
     </main>
 
-    {{template "modal-usuarios"}}
+    {{template "modal-profissional"}}
     {{template "modal-loading"}}
 
     {{template "scripts"}}
-    <script src="assets/js/usuario.js"></script>
+    <script src="assets/js/profissional.js"></script>
 </body>
 </html>

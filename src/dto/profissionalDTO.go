@@ -6,3 +6,9 @@ type ProfissionalResponseDTO struct {
 	Registro string             `json:"registro"`
 	Usuario  UsuarioResponseDTO `json:"usuario"`
 }
+
+type ProfissionalCadastroDTO struct {
+	Titulo   string `json:"titulo"`
+	Registro string `json:"registro"`
+	Login    string `json:"login"`
+}

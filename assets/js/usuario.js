@@ -8,17 +8,6 @@ $(document).ready(() => {
         }
     })
 
-    $('.form-control').each(function() {
-        if ($(this).val() == ""){
-            $(this).addClass('is-invalid')
-            $(this).removeClass('is-valid')
-        }else {
-            $(this).addClass('is-valid')
-            $(this).removeClass('is-invalid')
-        }
-        $(this).on('keyup', confereCampo)
-    })
-
     $('.acao').each(function(){
         $(this).on('click', (e) => {
             acao = e.target.dataset.acao
@@ -167,16 +156,6 @@ function editarUsuarioRequest(e){
         }
     })
 
-}
-
-function confereCampo(){
-    if ($(this).val() == ""){
-        $(this).addClass('is-invalid')
-        $(this).removeClass('is-valid')
-    }else {
-        $(this).addClass('is-valid')
-        $(this).removeClass('is-invalid')
-    }
 }
 
 function editarUsuario(id){

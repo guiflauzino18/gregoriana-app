@@ -1,0 +1,112 @@
+{{define "modal-profissional"}}
+<!-- Modal Profissionals é prado para cadastrar ou editar Profissionals -->
+<div class="modal fade modal-xl" id="modal-profissional" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <!-- Modal header -->
+            <div class="modal-header">
+                <h2 id="modal-titulo" class="cor-titulo">Novo Profissional</h2>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" arua-label="Close" aria-hidden="true"></button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <div>
+                    <form id="form-pr-cadastro" class="needs-validation">
+                        <div class="row">
+                            <div class="col-md-1 d-none">
+                                <label for="pr-id" class="form-label">ID</label>
+                                <input type="number" class="form-control limpar-campo" id="pr-id" readonly disabled>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="pr-titulo" class="form-label">titulo</label>
+                                <input type="text" class="form-control limpar-campo" id="pr-titulo" required>
+                                <div class="valid-feedback">
+                                    Muito bom!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Confira este campo!
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="pr-registro" class="form-label">registro</label>
+                                <input type="text" class="form-control limpar-campo" id="pr-registro" required>
+                                <div class="valid-feedback">
+                                    Muito bom!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Confira este campo!
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label for="pr-login" class="form-label">login</label>
+                                <div class="input-group">
+                                    <span class="input-group-text">@</span>
+                                    <input type="text" class="form-control limpar-campo" id="pr-login" required>
+                                    <div class="valid-feedback">
+                                        Muito bom!
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Confira este campo!
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-primary">Salvar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- Modal Footer -->
+        </div>
+
+    </div>
+</div>
+
+
+
+<div class="modal" id="modal-reset-senha" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Modal title</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form id="form-reset-senha">
+                <div class="mb">
+                    <input type="text" class="form-control d-none" id="id-reset-senha" required readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="nova-senha-reset-senha" class="form-label">Nova Senha</label>
+                    <input type="password" class="form-control" id="nova-senha-reset-senha" required>
+                    <div class="invalid-feedback">
+                        Confira este campo!
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="test-nova-senha-reset-senha" class="form-label">Confirme a Nova Senha</label>
+                    <input type="password" class="form-control" id="test-nova-senha-reset-senha" required>
+                    <div class="invalid-feedback">
+                        Confira este campo!
+                    </div>
+                </div>
+                <div class="mb-3 form-check">
+                    <input type="checkbox" class="form-check-input" id="troca-senha-reset-senha">
+                    <label class="form-check-label" for="troca-senha">Trocar senha no próximo Login</label>
+                  </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Salvar</button>
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{{end}}
