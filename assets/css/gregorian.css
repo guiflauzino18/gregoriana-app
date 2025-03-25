@@ -7,16 +7,45 @@
     --color-text-primary: #212121;
     --color-text-secondary: #757575;
     --color-text-botao: #FFF;
+    --color-invalid: #ff6775;
 
     --font-familly-titulo: 'georgia', 'avenir', 'avenir-light', 'arial';
     --font-familly-paragrafo: 'avenir', 'avenir-light', 'arial';
 
-    --bs-btn-close-color: var(var(--color-text-botao))
+    --bs-btn-close-color: var(--color-text-botao);
+    --bs-form-valid-color: var(--color-light);
+
+    
 }
 
 #modal-usuarios{
     --bs-modal-color: #FFF;
     --bs-modal-bg: #3b3434;
+}
+
+.dropdown-item{
+    --bs-dropdown-link-active-bg: var(--color-primary);
+}
+
+.btn-primary{
+    --bs-btn-color: #fff;
+    --bs-btn-bg: var(--color-primary);
+    --bs-btn-border-color: var(--color-primary);
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: var(--color-primary-dark);
+    --bs-btn-hover-border-color: var(--color-primary-dark);
+    --bs-btn-focus-shadow-rgb: 49, 132, 253;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: var(--color-primary);
+    --bs-btn-active-border-color: var(--color-primary);
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: var(--color-primary);
+    --bs-btn-disabled-border-color: var(--color-primary);
+}
+
+.invalid-feedback{
+    color: var(--color-invalid);
 }
 
 input:focus{
@@ -212,6 +241,7 @@ footer{
     margin-left: 30px;
 }
 
-.sb-oculta-botao{
-
+.a{
+    text-decoration: none;
+    color: var(--bs-table-color);
 }

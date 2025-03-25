@@ -61,3 +61,8 @@ func FazerLogin(w http.ResponseWriter, r *http.Request) {
 	respostas.JSON(w, http.StatusOK, nil)
 
 }
+
+func FazerLogout(w http.ResponseWriter, r *http.Request) {
+	cookies.Deletar(w)
+	http.Redirect(w, r, "/login", 302)
+}

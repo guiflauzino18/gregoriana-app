@@ -49,14 +49,19 @@ func CarregarHome(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	utils.ExecutarTemplate(w, "index.html", struct {
-		Usuario *dto.UsuarioResponseDTO
-		URL     string
-	}{
-		Usuario: &usuario,
-		URL:     "/home",
-	})
+	if usuario.AlteraNextLogon {
+		http.Redirect(w, r, "/senha", 302)
 
+	} else {
+
+		utils.ExecutarTemplate(w, "index.html", struct {
+			Usuario *dto.UsuarioResponseDTO
+			URL     string
+		}{
+			Usuario: &usuario,
+			URL:     "/home",
+		})
+	}
 }
 
 // CarregarConfiguracao carrega tela de Configuracao
@@ -109,4 +114,76 @@ func CarregarUsuarios(w http.ResponseWriter, r *http.Request) {
 		Usuario:  &usuario,
 		URL:      "/usuarios",
 	})
+}
+
+func CarregarSenha(w http.ResponseWriter, r *http.Request) {
+	//Tras dados do usuário logado
+	url := fmt.Sprintf("%s/api/index", config.APIURL)
+	response, err := request.RequestComAutenticacao(r, http.MethodGet, url, nil)
+	if err != nil {
+		respostas.JSON(w, http.StatusInternalServerError, respostas.ErroAPI{Erro: err.Error()})
+		return
+	}
+	defer response.Body.Close()
+
+	if response.StatusCode >= 400 {
+		respostas.TratarStatusCodeDeErro(w, response)
+		http.Redirect(w, r, "/login", 302)
+		return
+	}
+
+	var UsuarioLogado dto.UsuarioResponseDTO
+	if err = json.NewDecoder(response.Body).Decode(&UsuarioLogado); err != nil {
+		respostas.JSON(w, http.StatusUnprocessableEntity, respostas.ErroAPI{Erro: err.Error()})
+		http.Redirect(w, r, "/login", 302)
+		return
+	}
+
+	utils.ExecutarTemplate(w, "senha.html", struct {
+		Usuario *dto.UsuarioResponseDTO
+		URL     string
+	}{
+		Usuario: &UsuarioLogado,
+		URL:     "/senha",
+	})
+}
+
+func CarregarProfissional(w http.ResponseWriter, r *http.Request) {
+	url := fmt.Sprintf("%s/api/admin/profissional/list", config.APIURL)
+
+	response, erro := request.RequestComAutenticacao(r, http.MethodGet, url, nil)
+	if erro != nil {
+		respostas.JSON(w, http.StatusInternalServerError, respostas.ErroAPI{Erro: erro.Error()})
+		return
+	}
+	defer response.Body.Close()
+
+	if response.StatusCode >= 400 {
+		respostas.TratarStatusCodeDeErro(w, response)
+		return
+	}
+
+	//Pega conteudo do Body
+	body, erro := io.ReadAll(response.Body)
+	if erro != nil {
+		respostas.JSON(w, http.StatusInternalServerError, respostas.ErroAPI{Erro: erro.Error()})
+		return
+	}
+
+	var profissional dto.Pageable[dto.ProfissionalResponseDTO]
+	if erro := json.Unmarshal(body, &profissional); erro != nil {
+		respostas.JSON(w, http.StatusUnprocessableEntity, respostas.ErroAPI{Erro: erro.Error()})
+		return
+	}
+
+	utils.ExecutarTemplate(w, "profissional.html", struct {
+		Profissional *dto.Pageable[dto.ProfissionalResponseDTO]
+		Usuario      *dto.UsuarioResponseDTO
+		URL          string
+	}{
+		Profissional: &profissional,
+		Usuario:      &usuario,
+		URL:          "/profissional",
+	})
+
 }

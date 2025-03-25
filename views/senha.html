@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gregorian</title>
+    {{template "styles"}}
+</head>
+<body>
+
+    <main style="margin: 0;">
+        <div class="container">
+            <div class="d-flex align-items-center justify-content-center">
+                <div class="d-flex flex-column justify-content-center align-items-center card">
+                    <form id="form-troca-senha" class="row p-5 d-flex flex-column justify-content-center align-items-center">
+                        <legend>Altere sua senha antes de prosseguir</legend>
+                        <div class="mb-3 col-md-8">
+                          <label for="new-senha" class="form-label">Nova Senha</label>
+                          <input type="number" class="form-control d-none" id="id" value={{.Usuario.Id}} readonly>
+                          <input type="password" class="form-control" id="new-senha" required>
+                          <div class="invalid-feedback">
+                            Confira este campo!
+                          </div>
+                        </div>
+                        <div class="mb-3 col-md-8">
+                          <label for="test-new-senha" class="form-label">Confirme a nova senha</label>
+                          <input type="password" class="form-control" id="test-new-senha" required>
+                          <div class="invalid-feedback">
+                            Confira este campo!
+                          </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Salvar</button>
+                      </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    {{template "scripts"}}
+    <script src="assets/js/senha.js"></script>
+</body>
+</html>

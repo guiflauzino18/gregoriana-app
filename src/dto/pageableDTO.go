@@ -11,17 +11,3 @@ type Pageable[T any] struct {
 	NumberOfElements int  `json:"numberOfElements"`
 	Empty            bool `json:"empty"`
 }
-
-// "last": true,
-// 	"totalPages": 1,
-// 	"totalElements": 1,
-// 	"first": true,
-// 	"size": 1,
-// 	"number": 0,
-// 	"sort": {
-// 		"sorted": true,
-// 		"empty": false,
-// 		"unsorted": false
-// 	},
-// 	"numberOfElements": 1,
-// 	"empty": false

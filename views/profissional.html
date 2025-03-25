@@ -15,12 +15,12 @@
         <!-- titulo -->
         <div class="row page-title ">
             <div class="row">
-                <h2 class="cor-titulo">Usuários</h2>
+                <h2 class="cor-titulo">Profissional</h2>
                 <br>
                 <p>Cadastre, edite e visualize usuários do sistema.</p>
             </div>
             <div class="row col-md-2">
-                <button id="abre-modal-usuarios" class="botao botao-primario" data-bs-toggle="modal" data-bs-target="#modal-usuarios" data-acao="cadastro">Novo Usuário</button>
+                <button id="abre-modal-usuarios" class="botao botao-primario" data-bs-toggle="modal" data-bs-target="#modal-usuarios" data-acao="cadastro">Novo Profissional</button>
             </div>
         </div>
 
@@ -30,23 +30,23 @@
             <thead class="thead-light">
                 <tr>
                 <th scope="col">#</th>
+                <th scope="col">Registro</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Telefone</th>
                 <th scope="col">E-mail</th>
                 <th scope="col">Login</th>
-                <th scope="col">Grupo</th>
                 <th scope="col">Ações</th>
                 </tr>
             </thead>
             <tbody>
-                {{range .Usuarios.Content}}
+                {{range .Profissional.Content}}
                 <tr>
                     <th scope="row">{{.Id}}</th>
-                    <td>{{.Nome}} {{.Sobrenome}}</td>
-                    <td>{{.Telefone}}</td>
-                    <td>{{.Email}}</td>
-                    <td>{{.Login}}</td>
-                    <td>{{.Role}}</td>
+                    <th scope="row">{{.Registro}}</th>
+                    <td>{{.Usuario.Nome}} {{.Usuario.Sobrenome}}</td>
+                    <td>{{.Usuario.Telefone}}</td>
+                    <td>{{.Usuario.Email}}</td>
+                    <td>{{.Usuario.Login}}</td>
                     <td>
                         <a class="a" data-bs-toggle="dropdown" href="#"><i class="ri-more-2-line"></i></a>
                         <ul class="dropdown-menu">
