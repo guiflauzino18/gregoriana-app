@@ -29,6 +29,15 @@ func Configurar(router *mux.Router) *mux.Router {
 	rotas = append(rotas, rotaExluiUsuario)
 	rotas = append(rotas, rotaProfissional)
 	rotas = append(rotas, rotaCadastroProfissional)
+	rotas = append(rotas, rotaBuscaProfissional)
+	rotas = append(rotas, rotaEditaProfissional)
+	rotas = append(rotas, rotaDeletaProfissional)
+	rotas = append(rotas, rotaListaProfissional)
+	rotas = append(rotas, rotaAgenda)
+	rotas = append(rotas, rotaCadastroAgenda)
+	rotas = append(rotas, rotaDeletaAgenda)
+	rotas = append(rotas, rotaPerfil)
+	rotas = append(rotas, rotaConfiguraAgenda)
 
 	for _, rota := range rotas {
 		if rota.RequerAutenticacao { //Se Rota requer Autenticação é chamado um Middleware passando primeiro a autenticação e depois chamando a função

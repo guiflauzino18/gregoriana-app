@@ -20,7 +20,7 @@ function logar(e){
         if (R.status == 403){
             $('#login-erro').removeClass('invisible')
         }else if (R.status >= 400) {
-            console.log("Erro ao fazer requisição à API:\n")
+            showLoadingErro("Erro ao fazer login!")
         }else {
             R.text().then((T) => {
                 $('#login-erro').addClass('invisible')

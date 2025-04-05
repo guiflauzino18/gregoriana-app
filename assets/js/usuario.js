@@ -23,24 +23,14 @@ $(document).ready(() => {
                     break;
 
                 case 'excluir':
-                    if (confirm("Deletar Usuário?")){
-                        $('#loading').modal('show');
+                    showConfirma("Deseja excluir este usuário!", ()=> {
+                        deletaUsuario(id);
+                        hideConfirma();
+                    })
+                    break;
 
-                        fetch("/usuario/"+id,{
-                            method: "DELETE",
-                            headers: {
-                                "Content-Type": "x-www-form-urlencoded"
-                            }
-                        }).then ((R) => {
-                            if (R.status >= 400){
-                                alert("Erro ao tentar excluir usuário!");
-                            }else {
-                                $('#loading').modal('hide');
-                                location.reload();
-                            }
-                        })
-                    }
-
+                case 'rastrear':
+                    showLoading();
                     break;
             
                 default:
@@ -73,16 +63,16 @@ function cadastroUsuarioRequest(e){
     e.preventDefault();
 
     if ($('#us-senha').val() == $('#us-senha-2').val()){
-
-
-        alterasenha = $('#us-trocar-senha').is(":checked") ? true : false
-
+        
         if ($('#us-role').val() == 'invalido') {
             $('#us-role').css({
                 "border": "1px solid red"
             })
             return
         }
+
+        showLoading();
+        alterasenha = $('#us-trocar-senha').is(":checked") ? true : false
         
         const body = {
             "nome": $('#us-nome').val(),
@@ -107,13 +97,14 @@ function cadastroUsuarioRequest(e){
 
         }).then((R) => {
             if (R.status == 409){
-                alert("Já exite um usuário com este Login")
-            }
-            else if (R.status >= 400){
-                alert("Erro ao cadastrar Usuário")
+                showLoadingErro("Já existe um usuário com este Login!")
+
+            }else if (R.status >= 400){
+                showLoadingErro("Erro no cadastro do Usuário!");
+                
             }else {
-                alert("Usuário Cadastrado com sucesso!" )
-                window.location.href = "/usuarios"
+                showLoadingSucesso("Usuário cadastrado com sucesso!");
+
             }
         })
     }else {
@@ -126,6 +117,7 @@ function cadastroUsuarioRequest(e){
 
 function editarUsuarioRequest(e){
     e.preventDefault()
+    showLoading();
 
     const body = {
         "id": $('#us-id').val(),
@@ -149,10 +141,10 @@ function editarUsuarioRequest(e){
 
     }).then((R) => {
         if (R.status >= 400){
-            alert("Erro ao salvar usuário")
+            showLoadingErro("Erro ao editar usuário!")
+
         }else {
-            alert("Usuário salvo com Sucesso")
-            location.reload()
+            showLoadingSucesso("Usuário editado com sucesso!");
         }
     })
 
@@ -197,6 +189,7 @@ function editarUsuario(id){
 
 function resetSenha(e){
     e.preventDefault()
+    showLoading();
 
     if ($('#nova-senha-reset-senha').val() != $('#test-nova-senha-reset-senha').val()){
         $('#nova-senha-reset-senha').addClass('is-invalid')
@@ -222,11 +215,28 @@ function resetSenha(e){
         body: JSON.stringify(dados)
     }).then((R) => {
         if (R.status >= 400){
-            alert("Erro ao resetar senha!")
+            showLoadingErro("Erro ao resetar senha!")
         }else {
-            alert("Senha alterada com sucesso")
-            location.reload()
+            showLoadingSucesso("Senha resetada com sucesso!")
         }
     })
 }
 
+function deletaUsuario(id){
+
+    $('#loading').modal('show');
+
+    fetch("/usuario/"+id,{
+        method: "DELETE",
+        headers: {
+            "Content-Type": "x-www-form-urlencoded"
+        }
+    }).then ((R) => {
+        if (R.status >= 400){
+            showLoadingErro("Erro ao excluir usuário!")
+        }else {
+            showLoadingSucesso("Usuário excluído com sucesso!")
+        }
+    })
+
+}

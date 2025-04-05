@@ -20,7 +20,7 @@
                 <p>Cadastre, edite e visualize Profissionais do sistema.</p>
             </div>
             <div class="row col-md-2">
-                <button id="abre-modal-usuarios" class="botao botao-primario" data-bs-toggle="modal" data-bs-target="#modal-profissional" data-acao="cadastro">Novo Profissional</button>
+                <button id="abre-modal-usuarios" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-profissional" data-acao="cadastro">Novo Profissional</button>
             </div>
         </div>
 
@@ -32,8 +32,6 @@
                 <th scope="col">#</th>
                 <th scope="col">Registro</th>
                 <th scope="col">Nome</th>
-                <th scope="col">Telefone</th>
-                <th scope="col">E-mail</th>
                 <th scope="col">Login</th>
                 <th scope="col">Ações</th>
                 </tr>
@@ -43,19 +41,13 @@
                 <tr>
                     <th scope="row">{{.Id}}</th>
                     <th scope="row">{{.Registro}}</th>
-                    <td>{{.Usuario.Nome}} {{.Usuario.Sobrenome}}</td>
-                    <td>{{.Usuario.Telefone}}</td>
-                    <td>{{.Usuario.Email}}</td>
-                    <td>{{.Usuario.Login}}</td>
+                    <td>{{.Nome}} {{.Sobrenome}}</td>
+                    <td>{{.Login}}</td>
                     <td>
                         <a class="a" data-bs-toggle="dropdown" href="#"><i class="ri-more-2-line"></i></a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item acao" data-user-id={{.Id}} data-acao="editar" href="#">Editar</a></li>
-                            <li><a class="dropdown-item acao" data-user-id={{.Id}} data-acao="bloquear" href="#">Bloquear</a></li>
-                            <li><a class="dropdown-item acao" data-user-id={{.Id}} data-acao="resetar" href="#">Resetar Senha</a></li>
-                            <li><a class="dropdown-item acao" data-user-id={{.Id}} data-acao="excluir" href="#">Excluir</a></li>
-                            <li><a class="dropdown-item acao" data-user-id={{.Id}} data-acao="rastrear" href="#">Rastreio</a></li>
-
+                            <li><a class="dropdown-item prof-acao" data-prof-id={{.Id}} data-prof-acao="editar" href="#">Editar</a></li>
+                            <li><a class="dropdown-item prof-acao" data-prof-id={{.Id}} data-prof-acao="excluir" href="#">Excluir</a></li>
                         </ul>
                     </td>
                 </tr>
@@ -67,6 +59,7 @@
 
     {{template "modal-profissional"}}
     {{template "modal-loading"}}
+    {{template "modal-confirma"}}
 
     {{template "scripts"}}
     <script src="assets/js/profissional.js"></script>

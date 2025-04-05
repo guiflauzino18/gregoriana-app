@@ -32,7 +32,7 @@ func main() {
 	//Carrega rotas configuradas
 	r := router.Gerar()
 
-	fmt.Printf("Aplicação iniciada e escutando na porta %s.\nURL da API: %s", config.Porta, config.APIURL)
+	fmt.Printf("Aplicação iniciada e escutando na porta %d.\nURL da API: %s", config.Porta, config.APIURL)
 
 	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%d", config.Porta), r))
 }

@@ -16,9 +16,10 @@ func Configurar() {
 }
 
 // Salvar registra as informações de autenticação
-func Salvar(w http.ResponseWriter, token string) error {
+func Salvar(w http.ResponseWriter, token, id string) error {
 	dados := map[string]string{
 		"token": token,
+		"id":    id,
 	}
 
 	dadosCodificados, erro := s.Encode("dados", dados)

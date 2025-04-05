@@ -15,13 +15,11 @@ var (
 	BlockKey []byte
 )
 
-// Carregar inicializa asd variáveis de ambientes
+// Carregar inicializa as variáveis de ambientes
 func Carregar() {
 	var erro error
 
-	if erro = godotenv.Load(); erro != nil {
-		log.Fatal(erro)
-	}
+	_ = godotenv.Load()
 
 	Porta, erro = strconv.Atoi(os.Getenv("APP_PORT"))
 	if erro != nil {

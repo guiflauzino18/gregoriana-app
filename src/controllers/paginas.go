@@ -187,3 +187,44 @@ func CarregarProfissional(w http.ResponseWriter, r *http.Request) {
 	})
 
 }
+
+func CarregaAgenda(w http.ResponseWriter, r *http.Request) {
+	url := fmt.Sprintf("%s/api/admin/agenda/list", config.APIURL)
+
+	response, erro := request.RequestComAutenticacao(r, http.MethodGet, url, nil)
+	if erro != nil {
+		respostas.JSON(w, http.StatusInternalServerError, respostas.ErroAPI{Erro: erro.Error()})
+		return
+	}
+	defer response.Body.Close()
+
+	if response.StatusCode >= 400 {
+		respostas.TratarStatusCodeDeErro(w, response)
+		return
+	}
+
+	var agendas dto.Pageable[dto.AgendaResponseDTO]
+
+	if erro := json.NewDecoder(response.Body).Decode(&agendas); erro != nil {
+		respostas.JSON(w, http.StatusUnprocessableEntity, respostas.ErroAPI{Erro: erro.Error()})
+		return
+	}
+
+	fmt.Println(agendas)
+
+	utils.ExecutarTemplate(w, "agenda.html", struct {
+		Agendas *dto.Pageable[dto.AgendaResponseDTO]
+		Usuario *dto.UsuarioResponseDTO
+		URL     string
+	}{
+		Agendas: &agendas,
+		Usuario: &usuario,
+		URL:     "/agenda",
+	})
+
+}
+
+func CarregaPerfil(w http.ResponseWriter, r *http.Request) {
+
+	utils.ExecutarTemplate(w, "perfil.html", nil)
+}

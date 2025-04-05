@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gregorian </title>
+    {{template "styles"}}
+</head>
+<body>
+    {{template "header"}}
+
+    {{template "sidebar"}}
+    <main class="main sb-oculta-main">
+
+        <div class="row h-100">
+            <div class="col-md-4 col-sm-4 d-flex col-lg-2 flex-column justify-content-center">
+
+                <div class="d-flex flex-column align-items-center">
+                    <img src="assets/img/perfil.png" width="250px" alt="">
+                    <h3>Nome</h3>
+                    <span class="fw-bold fs-5">login</span>
+                    <span class="text-muted">Empresa</span>
+                </div>
+                
+            </div>
+            <div class="col-md-8 col-lg-8 bg-light border rounded d-flex flex-column justify-content-center p-5">
+                <h1 class="mt-4">Informações</h1>
+
+                <form id="form-perfil" class="mt-4">
+                    <div class="d-flex justify-content-center">
+                        <div class="m-3 col-md-4">
+                            <label for="nome">Nome</label>
+                            <input required id="nome" name="nome" type="text" class="form-control">
+                        </div>
+                        <div class="m-3 col-md-4">
+                            <label for="sobrenome">Sobrenome</label>
+                            <input required id="sobrenome" name="sobrenome" type="text" class="form-control">
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <div class="col-lg-4 col-md-4 m-3">
+                            <label for="nascimento">Data de Nascimento</label>
+                            <input required id="nascimento" name="nascimento" type="date" class="form-control">
+                        </div>
+                        <div class="col-lg-4 col-md-4 m-3">
+                            <label for="telefone">Telefone</label>
+                            <input required id="telefone" name="telefone" type="text" class="form-control">
+                        </div>
+                    </div>
+                    
+                    <div class="d-flex justify-content-center">
+                        <div class="col-lg-4 col-md-4 m-3">
+                            <label for="email">E-mail</label>
+                            <input required type="text" id="email" name="email" class="form-control">
+                        </div>
+                        <div class="col-lg-4 col-md-4 m-3">
+                            <label for="endereco">Endereço</label>
+                            <input required type="text" id="endereco" name="endereco" class="form-control">
+                        </div>
+                    </div>
+                    <div class="row justify-content-center mt-4">
+                        <button class="btn btn-primary col-lg-3">Salvar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </main>
+
+    {{template "scripts"}}
+    <script src="assets/js/perfil.js"></script>
+</body>
+</html>

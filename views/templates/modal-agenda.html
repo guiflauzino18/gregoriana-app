@@ -1,0 +1,124 @@
+{{define "modal-agenda"}}
+<!-- Modal Agenda é usado para cadastrar ou editar Agendas -->
+<div class="modal fade modal-xl" id="modal-agenda" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <!-- Modal header -->
+            <div class="modal-header">
+                <h2 id="modal-titulo" class="cor-titulo">Nova Agenda</h2>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" arua-label="Close" aria-hidden="true"></button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <div>
+                    <form id="form-ag-cadastro" class="needs-validation">
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-md-4">
+                                <label for="ag-nome" class="form-label">Nome</label>
+                                <input type="text" class="form-control limpar-campo" id="ag-nome" required>
+                                <div class="valid-feedback">
+                                    Muito bom!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Confira este campo!
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label" for="ag-profissional">Profissional</label>
+                                <select class="form-select" id="profissional-id" required>
+                                    <option id="clone-option" value="invalido" selected>Selecione</option>
+                                </select>
+                                <div class="valid-feedback">
+                                    Muito bom!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Confira este campo!
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-primary">Salvar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- Modal Footer -->
+        </div>
+
+    </div>
+</div>
+
+
+<!-- Modal de Edição de Agenda -->
+<div class="modal fade modal-xl" id="modal-edit-agenda" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <!-- Modal header -->
+            <div class="modal-header">
+                <h2 id="modal-titulo" class="cor-titulo">Edição de Agenda</h2>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" arua-label="Close" aria-hidden="true"></button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <div>
+                    <form id="form-ag-cadastro" class="needs-validation">
+                        <div class="row d-flex justify-content-center">
+                            <div class="row">
+                                <div class="col-md-1 d-none">
+                                    <label for="ag-id" class="form-label">ID</label>
+                                    <input type="number" class="form-control limpar-campo" id="ag-id" readonly disabled>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="ag-nome" class="form-label">Nome</label>
+                                    <input type="text" class="form-control limpar-campo" id="ag-nome" required>
+                                    <div class="valid-feedback">
+                                        Muito bom!
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Confira este campo!
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label for="ag-status" class="form-label">Status</label>
+                                    <input type="text" class="form-control limpar-campo" id="ag-status" required>
+                                    <div class="valid-feedback">
+                                        Muito bom!
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Confira este campo!
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="ag-profissional" class="form-label">profissional</label>
+                                    <input type="text" class="form-control limpar-campo" id="ag-profissional" required>
+                                    <div class="valid-feedback">
+                                        Muito bom!
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        Confira este campo!
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-primary">Salvar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- Modal Footer -->
+        </div>
+
+    </div>
+</div>
+{{end}}

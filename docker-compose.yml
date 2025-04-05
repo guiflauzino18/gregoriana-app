@@ -1,0 +1,33 @@
+services:
+  gregorian-db:
+    image: mysql:8.0-oracle
+    container_name: gregorian-db
+    restart: unless-stopped
+    ports:
+    - 3306:3306
+    networks:
+      - gregorian-net
+    environment:
+      - MYSQL_ROOT_PASSWORD=Gmn0213
+      - MYSQL_DATABASE=gregorian
+      - MYSQL_USER=gregorian
+      - MYSQL_PASSWORD=Gmn0213
+
+  gregorian-api:
+    image: guiflauzino18/gregorian-api:latest
+    container_name: gregorian-api
+    restart: unless-stopped
+    ports:
+    - 8080:8080
+    depends_on:
+      - gregorian-db
+    networks:
+      - gregorian-net
+    environment:
+      - MYSQL_IP=gregorian-db
+      - MYSQL_USERNAME=gregorian
+      - MYSQL_PASSWORD=Gmn0213
+      - JWT_SECRET=sysadmin
+
+networks:
+  gregorian-net:

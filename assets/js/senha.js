@@ -14,6 +14,8 @@ function trocaSenha(e){
         $('#test-new-senha').removeClass('is-invalid')
     }
 
+    showLoading();
+
     const data = {
         "id": $('#id').val(),
         "senha": $('#new-senha').val(),
@@ -29,10 +31,10 @@ function trocaSenha(e){
 
     }).then((R) => {
         if (R.status >= 400){
-            alert("Erro ao alterar senha!")
+            showLoadingErro("Erro ao alterar senha!")
+
         }else {
-            console.log(R.status)
-            alert("Senha alterada com sucesso!")
+            
             window.location.href = "/"
         }
     })

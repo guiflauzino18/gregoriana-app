@@ -1,0 +1,34 @@
+package rotas
+
+import (
+	"gregorian-app/src/controllers"
+	"net/http"
+)
+
+var rotaAgenda = Rota{
+	URI:                "/agenda",
+	Metodo:             http.MethodGet,
+	Funcao:             controllers.CarregaAgenda,
+	RequerAutenticacao: true,
+}
+
+var rotaCadastroAgenda = Rota{
+	URI:                "/agenda",
+	Metodo:             http.MethodPost,
+	Funcao:             controllers.CadastraAgenda,
+	RequerAutenticacao: true,
+}
+
+var rotaDeletaAgenda = Rota{
+	URI:                "/agenda/{id}",
+	Metodo:             http.MethodDelete,
+	Funcao:             controllers.DeletaAgenda,
+	RequerAutenticacao: true,
+}
+
+var rotaConfiguraAgenda = Rota{
+	URI:                "/agenda/configure",
+	Metodo:             http.MethodPut,
+	Funcao:             controllers.ConfiguraAgenda,
+	RequerAutenticacao: true,
+}

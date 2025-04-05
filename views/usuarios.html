@@ -20,7 +20,7 @@
                 <p>Cadastre, edite e visualize usuários do sistema.</p>
             </div>
             <div class="row col-md-2">
-                <button id="abre-modal-usuarios" class="botao botao-primario" data-bs-toggle="modal" data-bs-target="#modal-usuarios" data-acao="cadastro">Novo Usuário</button>
+                <button id="abre-modal-usuarios" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-usuarios" data-acao="cadastro">Novo Usuário</button>
             </div>
         </div>
 
@@ -67,6 +67,7 @@
 
     {{template "modal-usuarios"}}
     {{template "modal-loading"}}
+    {{template "modal-confirma"}}
 
     {{template "scripts"}}
     <script src="assets/js/usuario.js"></script>

@@ -53,3 +53,10 @@ var rotaExluiUsuario = Rota{
 	Funcao:             controllers.ExcluirUsuario,
 	RequerAutenticacao: true,
 }
+
+var rotaPerfil = Rota{
+	URI:                "/perfil",
+	Metodo:             http.MethodGet,
+	Funcao:             controllers.CarregaPerfil,
+	RequerAutenticacao: true,
+}
