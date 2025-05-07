@@ -1,0 +1,31 @@
+{{define "modal-loading"}}
+<div class="modal fade" data-bs-backdrop="static" id="loading" tabindex="1" style="z-index: 5000;">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Processando...</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="d-flex justify-content-center align-items-center flex-column">
+                <div class="spinner-border" role="status">
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+                <div class="loading-erro loading-status d-none">
+                  <img src="assets/img/x-erro.png" alt="">
+                </div>
+                <div class="loading-sucesso loading-status d-none">
+                  <img src="assets/img/check-sucesso.png" alt="">
+                </div>
+                <div class="d-none mt-4">
+                  <p id="pLoadingMessage" class="fs-4 text-center">Mensagem do Status do Processamento!</p>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center">
+              <button id="btnLoadingClose" class="btn btn-primary d-none">Ok</button>
+            </div>
+        </div>
+      </div>
+    </div>
+</div>
+{{end}}

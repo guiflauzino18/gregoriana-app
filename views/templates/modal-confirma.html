@@ -1,0 +1,29 @@
+{{define "modal-confirma"}}
+<div class="modal fade" data-bs-backdrop="static" id="modal-confirma" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Confirma</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body d-flex flex-column justify-content-center align-items-center">
+
+          <div class="loading-status">
+            <img src="assets/img/aviso.png" alt="">
+          </div>
+
+          <div class="d-flex justify-content-center fs-5">
+            <p id="confirma-message">Mensagem de confirmação!</p>
+          </div>
+
+          <div class="row">
+            <div class="">
+              <button id="bt-confirma" class="btn btn-primary">Ok</button>
+              <button data-bs-dismiss="modal" class="btn btn-secondary">Cancelar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+  {{end}}

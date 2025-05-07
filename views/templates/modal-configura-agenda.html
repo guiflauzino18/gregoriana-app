@@ -1,0 +1,112 @@
+{{define "modal-configura-agenda"}}
+<div class="modal fade" data-bs-backdrop="static" id="modal-configura-agenda" tabindex="1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Configurar Agenda</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+          <span>Agenda: </span> <span>Profissional: </span> 
+        <div class="modal-body">
+            <form id="form-configura-agenda">
+                <div class="row d-none">
+                    <div class="col-lg-6">
+                        <label class="form-label" for="id-agenda">ID Agenda</label>
+                        <input class="form-control" id="id-agenda" name="id-agenda" type="number" required readonly>
+                    </div>
+                    <div class="col-lg-6">
+                        <label class="form-label" for="id-profissional">ID profissional</label>
+                        <input class="form-control" id="id-profissional" name="id-profissional" type="number" required readonly>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="card col-lg-3 m-3">
+                        <div class="card-header">
+                            
+                            <div class="input-group mb-3">
+                                <label class="fs-5" for="segunda-feira">Segunda-feira</label>
+                                <input id="segunda-feira" class="ms-3 dia" type="checkbox">
+                            </div>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <div class="input-group mb-3">
+                                    <label class="form-label" for="intervalo-sessao">Intervalo entre sessão ou consulta</label>
+                                    <input class="form-control" id="segunda-intervalo" type="number" disabled>
+                                    <!-- <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
+                                    <span class="input-group-text" id="basic-addon2">minutos</span>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="input-group mb-3">
+                                    <label class="form-label" for="intervalo-sessao">Duração da sessão ou consulta</label>
+                                    <input class="form-control" id="segunda-duracao" type="number" disabled>
+                                    <!-- <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
+                                    <span class="input-group-text" id="basic-addon2">minutos</span>
+                                  </div>
+                            </li>
+                            
+                            <li class="list-group-item">
+                                <label class="form-label" for="intervalo-sessao">Hora de início</label>
+                                <input class="form-control" id="segunda-inicio" type="time" disabled>
+                            </li>
+                            
+                            <li class="list-group-item">
+                                <label class="form-label" for="intervalo-sessao">Hora de Término</label>
+                                <input class="form-control" id="segunda-fim" type="time" disabled>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                    <div class="card col-lg-3 m-3">
+                        <div class="card-header">
+                            
+                            <div class="input-group mb-3">
+                                <label class="fs-5" for="terca-feira">Terça-feira</label>
+                                <input id="terca-feira" class="ms-3 dia" type="checkbox">
+                            </div>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <div class="input-group mb-3">
+                                    <label class="form-label" for="intervalo-sessao">Intervalo entre sessão ou consulta</label>
+                                    <input class="form-control" id="terca-intervalo" type="number" disabled>
+                                    <!-- <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
+                                    <span class="input-group-text" id="basic-addon2">minutos</span>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="input-group mb-3">
+                                    <label class="form-label" for="intervalo-sessao">Duração da sessão ou consulta</label>
+                                    <input class="form-control" id="terca-duracao" type="number" disabled>
+                                    <!-- <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
+                                    <span class="input-group-text" id="basic-addon2">minutos</span>
+                                  </div>
+                            </li>
+                            
+                            <li class="list-group-item">
+                                <label class="form-label" for="intervalo-sessao">Hora de início</label>
+                                <input class="form-control" id="terca-inicio" type="time" disabled>
+                            </li>
+                            
+                            <li class="list-group-item">
+                                <label class="form-label" for="intervalo-sessao">Hora de Término</label>
+                                <input class="form-control" id="terca-fim" type="time" disabled>
+                            </li>
+
+                        </ul>
+                    </div>
+                                       
+                     
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">Salvar</button>
+                </div>
+            </form>
+        </div>
+      </div>
+    </div>
+  </div>
+{{end}}

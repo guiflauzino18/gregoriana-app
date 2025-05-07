@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gregorian - Agenda</title>
+    {{template "styles"}}
+</head>
+<body>
+    {{template "header" .Usuario}}
+
+    {{template "sidebar" .URL}}
+
+    <main class="main sb-oculta-main">
+        <!-- titulo -->
+        <div class="row page-title ">
+            <div class="row">
+                <h2 class="cor-titulo">Agendas</h2>
+                <br>
+                <p>Cadastre, edite e visualize Agendas do sistema.</p>
+            </div>
+            <div class="row">
+                <button id="abre-modal-agenda" class="btn btn-primary col-md-2 me-1" data-bs-toggle="modal" data-bs-target="#modal-agenda" data-acao="cadastro">Nova Agenda</button>
+                <button class="btn btn-secondary col-md-2 me-1">Status das agendas</button>
+            </div>
+        </div>
+
+        <!-- Table -->
+         <section>
+            <table class="table table-sm table-hover table-striped">
+            <thead class="thead-light">
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Profissional</th>
+                <th scope="col">Status</th>
+                <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{range .Agendas.Content}}
+                <tr>
+                    <th scope="row">{{.Id}}</th>
+                    <td>{{.Nome}}</td>
+                    <td>{{.NomeProfissional}}</td>
+                    <td>{{.StatusAgenda.Nome}}</td>
+                    <td>
+                        <a class="a" data-bs-toggle="dropdown" href="#"><i class="ri-more-2-line"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item ag-acao" data-ag-id={{.Id}} data-ag-acao="editar" href="#">Editar</a></li>
+                            <li><a class="dropdown-item ag-acao" data-ag-id={{.Id}} data-ag-acao="bloquear" href="#">Bloquear</a></li>
+                            <li><a class="dropdown-item ag-acao" data-ag-id={{.Id}} data-pr-id={{.IdProfissional}} data-ag-acao="configurar" href="#">Configurar</a></li>
+                            <li><a class="dropdown-item ag-acao" data-ag-id={{.Id}} data-ag-acao="excluir" href="#">Excluir</a></li>
+
+                        </ul>
+                    </td>
+                </tr>
+                {{end}}
+            </tbody>
+            </table>
+         </section>
+    </main>
+
+    {{template "modal-agenda"}}
+    {{template "modal-loading"}}
+    {{template "modal-confirma"}}
+    {{template "modal-configura-agenda"}}
+
+    {{template "scripts"}}
+    <script src="assets/js/agenda.js"></script>
+</body>
+</html>

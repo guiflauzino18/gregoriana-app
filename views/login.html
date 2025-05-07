@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gregorian - Login</title>
+    {{template "styles"}}
+</head>
+<body>
+    <main style="margin: 0;">
+        <div class="container">
+    
+          <section class="section register min-vh-100 d-flex flex-column align-items-center justify-content-center py-4">
+            <div class="container">
+              <div class="row justify-content-center">
+                <div class="col-lg-4 col-md-6 d-flex flex-column align-items-center justify-content-center">
+    
+                  <div class="d-flex justify-content-center py-4">
+                    <!-- <a href="#" class="logo d-flex align-items-center w-auto">
+                      <img src="assets/img/logo.png" alt="">
+                      <span class="d-none d-lg-block">Gregorian</span>
+                    </a> -->
+                    <h3 class="logo d-flex align-items-center w-auto text-success">Gregorian</h3>
+                  </div><!-- End Logo -->
+    
+                  <div class="card sombra mb-3">
+    
+                    <div class="card-body">
+    
+                      <div class="pt-4 pb-2">
+                        <h5 class="text-center text-principal pb-0 fs-4">Entre na sua Conta</h5>
+                        <p class="text-center text-secundario small">Informe seu usuário &amp; senha para entrar!</p>
+                      </div>
+    
+                      <form class="row g-3 needs-validation" id="form-login" method="post">
+    
+                        <div class="col-12">
+                          <label for="login" class="form-label">Usuário</label>
+                          <div class="input-group has-validation">
+                            <span class="input-group-text" id="inputGroupPrepend">@</span>
+                            <input type="text" name="login" class="form-control" id="login" required>
+                            <div class="invalid-feedback">Insira seu usuário.</div>
+                          </div>
+                        </div>
+    
+                        <div class="col-12">
+                          <label for="password" class="form-label">Senha</label>
+                          <input type="password" name="password" class="form-control" id="password" required>
+                          <div class="invalid-feedback">Insira sua Senha!</div>
+                        </div>
+                        <div class="col-12">
+                          <button class="botao botao-primario w-100" type="submit">Entrar</button>
+                        </div>
+                        <div id="login-erro" class="col-12 text-danger text-center invisible">
+                          <span>Usuário ou senha inválidos⚠️</span>
+                        </div>
+                      </form>
+    
+                    </div>
+                  </div>
+    
+                </div>
+              </div>
+            </div>
+    
+            {{template "footer"}}
+          </section>
+    
+        </div>
+      </main>
+
+
+      {{template "scripts"}}
+      <script src="assets/js/login.js"></script>
+</body>
+</html>

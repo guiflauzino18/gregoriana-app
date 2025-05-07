@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gregorian - configuração</title>
+    {{template "styles"}}
+    <link rel="stylesheet" href="assets/css/configuracao.css">
+</head>
+<body>
+    {{template "header" .Usuario}}
+
+    {{template "sidebar" .URL}}
+
+    <main class="main sb-oculta-main">
+        <!-- Titulo -->
+        <div class="row page-title">
+            <h2 class="cor-titulo">Configuração</h2>
+            <p>Aqui você define alguns parâmetros para o funcionamento do sistema.</p>
+        </div>
+
+        <!-- Cards -->
+        <section class="section">
+            <div class="row">
+                <div class="col-xs-12 col-md-3">
+                    <div class="card">
+                        <div class="card-header">
+                            Usuários
+                        </div>
+                        <div class="card-body card-modulos-body">
+                            <!-- <h5 class="card-title">Special title treatment</h5> -->
+                            <p class="card-text">Cadastre e edite usuários do sistema</p>
+                            <a href="#" class="btn btn-primary btn-configuracao" data-conf="usuario">Acesse</a>
+                        </div>
+                        </div>
+                </div>
+                <div class="col-xs-12 col-md-3">
+                    <div class="card">
+                        <div class="card-header">
+                            Agenda
+                        </div>
+                        <div class="card-body card-modulos-body">
+                            <!-- <h5 class="card-title">Special title treatment</h5> -->
+                            <p class="card-text">Cadastre e gerencie agendas</p>
+                            <a href="#" class="btn btn-primary btn-configuracao"data-conf="agenda">Acesse</a>
+                        </div>
+                        </div>
+                </div>
+                <div class="col-xs-12 col-md-3">
+                    <div class="card">
+                        <div class="card-header">
+                            Profissional
+                        </div>
+                        <div class="card-body card-modulos-body">
+                            <!-- <h5 class="card-title">Special title treatment</h5> -->
+                            <p class="card-text">Cadastre e gerencie Profissionais.</p>
+                            <a href="#" class="btn btn-primary btn-configuracao"data-conf="profissional">Acesse</a>
+                        </div>
+                        </div>
+                </div>
+                <div class="col-xs-12 col-md-3">
+                    <div class="card">
+                        <div class="card-header">
+                            Empresa
+                        </div>
+                        <div class="card-body card-modulos-body">
+                            <!-- <h5 class="card-title">Special title treatment</h5> -->
+                            <p class="card-text">Visualize e altere dados da sua empresa</p>
+                            <a href="#" class="btn btn-primary btn-configuracao" data-conf="empresa">Acesse</a>
+                        </div>
+                        </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    {{template "footer"}}
+    
+    {{template "scripts"}}
+    <script src="assets/js/configuracao.js"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gregorian - Configuração</title>
+    {{template "styles"}}
+</head>
+<body>
+    {{template "header" .Usuario}}
+
+    {{template "sidebar" .URL}}
+
+    <main class="main sb-oculta-main">
+        <!-- titulo -->
+        <div class="row page-title ">
+            <div class="row">
+                <h2 class="cor-titulo">Profissional</h2>
+                <br>
+                <p>Cadastre, edite e visualize Profissionais do sistema.</p>
+            </div>
+            <div class="row col-md-2">
+                <button id="abre-modal-usuarios" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modal-profissional" data-acao="cadastro">Novo Profissional</button>
+            </div>
+        </div>
+
+        <!-- Table -->
+         <section>
+            <table class="table table-sm table-hover table-striped">
+            <thead class="thead-light">
+                <tr>
+                <th scope="col">#</th>
+                <th scope="col">Registro</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Login</th>
+                <th scope="col">Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{range .Profissional.Content}}
+                <tr>
+                    <th scope="row">{{.Id}}</th>
+                    <th scope="row">{{.Registro}}</th>
+                    <td>{{.Nome}} {{.Sobrenome}}</td>
+                    <td>{{.Login}}</td>
+                    <td>
+                        <a class="a" data-bs-toggle="dropdown" href="#"><i class="ri-more-2-line"></i></a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item prof-acao" data-prof-id={{.Id}} data-prof-acao="editar" href="#">Editar</a></li>
+                            <li><a class="dropdown-item prof-acao" data-prof-id={{.Id}} data-prof-acao="excluir" href="#">Excluir</a></li>
+                        </ul>
+                    </td>
+                </tr>
+                {{end}}
+            </tbody>
+            </table>
+         </section>
+    </main>
+
+    {{template "modal-profissional"}}
+    {{template "modal-loading"}}
+    {{template "modal-confirma"}}
+
+    {{template "scripts"}}
+    <script src="assets/js/profissional.js"></script>
+</body>
+</html>
