@@ -64,8 +64,10 @@ $(document).ready(() => {
         })
     })
 
+    //Faz request à API para salvar a configuração da agenda
     $('#form-configura-agenda').on('submit', configuraAgendaRequest);
 
+    //Ao marcar o dia libera os campos dos horários.
     $('.dia').on('change', (e) => {
         id = e.target.id;
 
@@ -85,20 +87,95 @@ $(document).ready(() => {
                 }
                 break;
 
-                case 'terca-feira':
-                    if ($(`#${id}`).is(':checked')){
-                        
-                        $('#terca-intervalo').prop('disabled', false);
-                        $('#terca-duracao').prop('disabled', false);
-                        $('#terca-inicio').prop('disabled', false);
-                        $('#terca-fim').prop('disabled', false);
-                    }else {
-                        $('#terca-intervalo').prop('disabled', true);
-                        $('#terca-duracao').prop('disabled', true);
-                        $('#terca-inicio').prop('disabled', true);
-                        $('#terca-fim').prop('disabled', true);
-                    }
-                    break;
+            case 'terca-feira':
+                if ($(`#${id}`).is(':checked')){
+                    
+                    $('#terca-intervalo').prop('disabled', false);
+                    $('#terca-duracao').prop('disabled', false);
+                    $('#terca-inicio').prop('disabled', false);
+                    $('#terca-fim').prop('disabled', false);
+                }else {
+                    $('#terca-intervalo').prop('disabled', true);
+                    $('#terca-duracao').prop('disabled', true);
+                    $('#terca-inicio').prop('disabled', true);
+                    $('#terca-fim').prop('disabled', true);
+                }
+                break;
+
+            case 'quarta-feira':
+                if ($(`#${id}`).is(':checked')){
+                    
+                    $('#quarta-intervalo').prop('disabled', false);
+                    $('#quarta-duracao').prop('disabled', false);
+                    $('#quarta-inicio').prop('disabled', false);
+                    $('#quarta-fim').prop('disabled', false);
+                }else {
+                    $('#quarta-intervalo').prop('disabled', true);
+                    $('#quarta-duracao').prop('disabled', true);
+                    $('#quarta-inicio').prop('disabled', true);
+                    $('#quarta-fim').prop('disabled', true);
+                }
+                break;
+
+            case 'quinta-feira':
+                if ($(`#${id}`).is(':checked')){
+                    
+                    $('#quinta-intervalo').prop('disabled', false);
+                    $('#quinta-duracao').prop('disabled', false);
+                    $('#quinta-inicio').prop('disabled', false);
+                    $('#quinta-fim').prop('disabled', false);
+                }else {
+                    $('#quinta-intervalo').prop('disabled', true);
+                    $('#quinta-duracao').prop('disabled', true);
+                    $('#quinta-inicio').prop('disabled', true);
+                    $('#quinta-fim').prop('disabled', true);
+                }
+                break;
+
+            case 'sexta-feira':
+                if ($(`#${id}`).is(':checked')){
+                    
+                    $('#sexta-intervalo').prop('disabled', false);
+                    $('#sexta-duracao').prop('disabled', false);
+                    $('#sexta-inicio').prop('disabled', false);
+                    $('#sexta-fim').prop('disabled', false);
+                }else {
+                    $('#sexta-intervalo').prop('disabled', true);
+                    $('#sexta-duracao').prop('disabled', true);
+                    $('#sexta-inicio').prop('disabled', true);
+                    $('#sexta-fim').prop('disabled', true);
+                }
+                break;
+
+            case 'sabado':
+                if ($(`#${id}`).is(':checked')){
+                    
+                    $('#sabado-intervalo').prop('disabled', false);
+                    $('#sabado-duracao').prop('disabled', false);
+                    $('#sabado-inicio').prop('disabled', false);
+                    $('#sabado-fim').prop('disabled', false);
+                }else {
+                    $('#sabado-intervalo').prop('disabled', true);
+                    $('#sabado-duracao').prop('disabled', true);
+                    $('#sabado-inicio').prop('disabled', true);
+                    $('#sabado-fim').prop('disabled', true);
+                }
+                break;
+
+            case 'domingo':
+                if ($(`#${id}`).is(':checked')){
+                    
+                    $('#domingo-intervalo').prop('disabled', false);
+                    $('#domingo-duracao').prop('disabled', false);
+                    $('#domingo-inicio').prop('disabled', false);
+                    $('#domingo-fim').prop('disabled', false);
+                }else {
+                    $('#domingo-intervalo').prop('disabled', true);
+                    $('#domingo-duracao').prop('disabled', true);
+                    $('#domingo-inicio').prop('disabled', true);
+                    $('#domingo-fim').prop('disabled', true);
+                }
+                break;
         
             default:
                 break;
@@ -168,6 +245,7 @@ function bloquearAgenda(id){
     console.log(`Agenda ${id} bloqueada!`);
 }
 
+//Abre Modal de configuração de agenda, buscando fias e horários se houver.
 function configuraAgenda(id, idProfissional){
     $('#id-agenda').val(id)
     $('#id-profissional').val(idProfissional)
@@ -198,6 +276,84 @@ function configuraAgenda(id, idProfissional){
                         $('#segunda-inicio').prop('disabled', false);
                         $('#segunda-fim').prop('disabled', false);
                         break;
+
+                    case 'Terça-Feira':
+                        $('#terca-id').val(dia.id);
+                        $('#terca-intervalo').val(dia.intervaloSessaoInMinutes);
+                        $('#terca-duracao').val(dia.duracaoSessaoInMinutes);
+                        $('#terca-inicio').val(dia.inicio);
+                        $('#terca-fim').val(dia.fim);
+                        $('#terca-feira').prop('checked', true);
+                        $('#terca-intervalo').prop('disabled', false);
+                        $('#terca-duracao').prop('disabled', false);
+                        $('#terca-inicio').prop('disabled', false);
+                        $('#terca-fim').prop('disabled', false);
+                        break;
+
+                    case 'Quarta-Feira':
+                        $('#quarta-id').val(dia.id);
+                        $('#quarta-intervalo').val(dia.intervaloSessaoInMinutes);
+                        $('#quarta-duracao').val(dia.duracaoSessaoInMinutes);
+                        $('#quarta-inicio').val(dia.inicio);
+                        $('#quarta-fim').val(dia.fim);
+                        $('#quarta-feira').prop('checked', true);
+                        $('#quarta-intervalo').prop('disabled', false);
+                        $('#quarta-duracao').prop('disabled', false);
+                        $('#quarta-inicio').prop('disabled', false);
+                        $('#quarta-fim').prop('disabled', false);
+                        break;
+
+                    case 'Quinta-Feira':
+                        $('#quinta-id').val(dia.id);
+                        $('#quinta-intervalo').val(dia.intervaloSessaoInMinutes);
+                        $('#quinta-duracao').val(dia.duracaoSessaoInMinutes);
+                        $('#quinta-inicio').val(dia.inicio);
+                        $('#quinta-fim').val(dia.fim);
+                        $('#quinta-feira').prop('checked', true);
+                        $('#quinta-intervalo').prop('disabled', false);
+                        $('#quinta-duracao').prop('disabled', false);
+                        $('#quinta-inicio').prop('disabled', false);
+                        $('#quinta-fim').prop('disabled', false);
+                        break;
+
+                    case 'Sexta-Feira':
+                        $('#sexta-id').val(dia.id);
+                        $('#sexta-intervalo').val(dia.intervaloSessaoInMinutes);
+                        $('#sexta-duracao').val(dia.duracaoSessaoInMinutes);
+                        $('#sexta-inicio').val(dia.inicio);
+                        $('#sexta-fim').val(dia.fim);
+                        $('#sexta-feira').prop('checked', true);
+                        $('#sexta-intervalo').prop('disabled', false);
+                        $('#sexta-duracao').prop('disabled', false);
+                        $('#sexta-inicio').prop('disabled', false);
+                        $('#sexta-fim').prop('disabled', false);
+                        break;
+
+                    case 'Sábado':
+                        $('#sabado-id').val(dia.id);
+                        $('#sabado-intervalo').val(dia.intervaloSessaoInMinutes);
+                        $('#sabado-duracao').val(dia.duracaoSessaoInMinutes);
+                        $('#sabado-inicio').val(dia.inicio);
+                        $('#sabado-fim').val(dia.fim);
+                        $('#sabado-feira').prop('checked', true);
+                        $('#sabado-intervalo').prop('disabled', false);
+                        $('#sabado-duracao').prop('disabled', false);
+                        $('#sabado-inicio').prop('disabled', false);
+                        $('#sabado-fim').prop('disabled', false);
+                        break;
+
+                    case 'Domingo':
+                        $('#domingo-id').val(dia.id);
+                        $('#domingo-intervalo').val(dia.intervaloSessaoInMinutes);
+                        $('#domingo-duracao').val(dia.duracaoSessaoInMinutes);
+                        $('#domingo-inicio').val(dia.inicio);
+                        $('#domingo-fim').val(dia.fim);
+                        $('#domingo-feira').prop('checked', true);
+                        $('#domingo-intervalo').prop('disabled', false);
+                        $('#domingo-duracao').prop('disabled', false);
+                        $('#domingo-inicio').prop('disabled', false);
+                        $('#domingo-fim').prop('disabled', false);
+                        break;
                 }
             }
 
@@ -207,6 +363,7 @@ function configuraAgenda(id, idProfissional){
 
 }
 
+//Faz o request à API para salvar a agenda.
 function configuraAgendaRequest(e) {
     e.preventDefault();
 
@@ -228,13 +385,68 @@ function configuraAgendaRequest(e) {
     
     if ($('#terca-feira').is(':checked')){
         var terca = {
-            "nome":"Terca-Feira",
+            "nome":"Terça-Feira",
 			"intervaloSessaoInMinutes": parseInt($('#terca-intervalo').val()),
 			"duracaoSessaoInMinutes": parseInt($('#terca-duracao').val()),
 			"inicio": $('#terca-inicio').val(),
 			"fim": $('#terca-fim').val()
         }
         dias.push(terca)
+    }
+
+    if ($('#quarta-feira').is(':checked')){
+        var quarta = {
+            "nome":"Quarta-Feira",
+			"intervaloSessaoInMinutes": parseInt($('#quarta-intervalo').val()),
+			"duracaoSessaoInMinutes": parseInt($('#quarta-duracao').val()),
+			"inicio": $('#quarta-inicio').val(),
+			"fim": $('#quarta-fim').val()
+        }
+        dias.push(quarta)
+    }
+
+    if ($('#quinta-feira').is(':checked')){
+        var quinta = {
+            "nome":"Quinta-Feira",
+			"intervaloSessaoInMinutes": parseInt($('#quinta-intervalo').val()),
+			"duracaoSessaoInMinutes": parseInt($('#quinta-duracao').val()),
+			"inicio": $('#quinta-inicio').val(),
+			"fim": $('#quinta-fim').val()
+        }
+        dias.push(quinta)
+    }
+
+    if ($('#sexta-feira').is(':checked')){
+        var sexta = {
+            "nome":"Sexta-Feira",
+			"intervaloSessaoInMinutes": parseInt($('#sexta-intervalo').val()),
+			"duracaoSessaoInMinutes": parseInt($('#sexta-duracao').val()),
+			"inicio": $('#sexta-inicio').val(),
+			"fim": $('#sexta-fim').val()
+        }
+        dias.push(sexta)
+    }
+
+    if ($('#sabado').is(':checked')){
+        var sabado = {
+            "nome":"Sábado",
+			"intervaloSessaoInMinutes": parseInt($('#sabado-intervalo').val()),
+			"duracaoSessaoInMinutes": parseInt($('#sabado-duracao').val()),
+			"inicio": $('#sabado-inicio').val(),
+			"fim": $('#sabado-fim').val()
+        }
+        dias.push(sabado)
+    }
+
+    if ($('#domingo').is(':checked')){
+        var domingo = {
+            "nome":"Domingo",
+			"intervaloSessaoInMinutes": parseInt($('#domingo-intervalo').val()),
+			"duracaoSessaoInMinutes": parseInt($('#domingo-duracao').val()),
+			"inicio": $('#domingo-inicio').val(),
+			"fim": $('#domingo-fim').val()
+        }
+        dias.push(domingo)
     }
 
     dados = {

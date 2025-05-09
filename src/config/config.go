@@ -9,10 +9,11 @@ import (
 )
 
 var (
-	APIURL   = ""
-	Porta    = 0
-	HashKey  []byte
-	BlockKey []byte
+	APIURL    = ""
+	Porta     = 0
+	HashKey   []byte
+	BlockKey  []byte
+	Navegacao []string
 )
 
 // Carregar inicializa as variáveis de ambientes

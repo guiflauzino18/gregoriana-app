@@ -84,3 +84,9 @@ function showConfirma(m, funcao){
 function hideConfirma(){
     $('#modal-confirma').modal('hide');
 }
+
+
+// Controle de histórico de navegação
+var navegacao = []
+
+

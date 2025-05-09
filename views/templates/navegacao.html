@@ -1,0 +1,11 @@
+{{define "navegacao"}}
+<div class="row ms-1">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            {{range .}}
+            <li class="breadcrumb-item"><a href="/{{.}}">{{.}}</a></li>
+            {{end}}
+        </ol>
+    </nav>
+</div>
+{{end}}
