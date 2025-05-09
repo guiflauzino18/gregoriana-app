@@ -37,6 +37,7 @@ func Configurar(router *mux.Router) *mux.Router {
 	rotas = append(rotas, rotaCadastroAgenda)
 	rotas = append(rotas, rotaDeletaAgenda)
 	rotas = append(rotas, rotaPerfil)
+	rotas = append(rotas, rotaBuscaAgenda)
 	rotas = append(rotas, rotaConfiguraAgenda)
 
 	for _, rota := range rotas {

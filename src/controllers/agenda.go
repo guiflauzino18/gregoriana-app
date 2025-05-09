@@ -70,6 +70,8 @@ func DeletaAgenda(w http.ResponseWriter, r *http.Request) {
 
 func ConfiguraAgenda(w http.ResponseWriter, r *http.Request) {
 
+	fmt.Println("##########")
+
 	var agenda dto.AgendaConfiguraDTO
 
 	if erro := json.NewDecoder(r.Body).Decode(&agenda); erro != nil {
@@ -96,4 +98,32 @@ func ConfiguraAgenda(w http.ResponseWriter, r *http.Request) {
 	defer response.Body.Close()
 
 	respostas.JSON(w, http.StatusOK, nil)
+}
+
+func BuscaAgenda(w http.ResponseWriter, r *http.Request) {
+	// Pega o id da URL
+	params := mux.Vars(r)
+	id, _ := strconv.Atoi(params["id"])
+	url := fmt.Sprintf("%s/api/admin/agenda/%d", config.APIURL, id)
+
+	response, erro := request.RequestComAutenticacao(r, http.MethodGet, url, nil)
+	if erro != nil {
+		respostas.JSON(w, http.StatusInternalServerError, respostas.ErroAPI{Erro: erro.Error()})
+		return
+	}
+
+	defer response.Body.Close()
+
+	if response.StatusCode >= 400 {
+		respostas.TratarStatusCodeDeErro(w, response)
+		return
+	}
+
+	var agendaDTO dto.AgendaResponseDTO
+	if erro := json.NewDecoder(response.Body).Decode(&agendaDTO); erro != nil {
+		respostas.JSON(w, http.StatusUnprocessableEntity, respostas.ErroAPI{Erro: erro.Error()})
+		return
+	}
+
+	respostas.JSON(w, http.StatusOK, agendaDTO)
 }

@@ -32,3 +32,10 @@ var rotaConfiguraAgenda = Rota{
 	Funcao:             controllers.ConfiguraAgenda,
 	RequerAutenticacao: true,
 }
+
+var rotaBuscaAgenda = Rota{
+	URI:                "/agenda/{id}",
+	Metodo:             http.MethodGet,
+	Funcao:             controllers.BuscaAgenda,
+	RequerAutenticacao: true,
+}

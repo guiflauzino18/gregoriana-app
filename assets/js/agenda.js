@@ -171,7 +171,40 @@ function bloquearAgenda(id){
 function configuraAgenda(id, idProfissional){
     $('#id-agenda').val(id)
     $('#id-profissional').val(idProfissional)
-    $('#modal-configura-agenda').modal('show')
+
+
+    
+    fetch("/agenda/"+id).then ((R) => {
+        if (R.status >= 400){
+            showLoadingErro("Erro ao carregar dados da agenda.");
+            return;
+        }
+
+        R.text().then((T) => {
+            var agenda = JSON.parse(T)
+            console.log(agenda)
+
+            for (dia of agenda.dias){
+                switch (dia.nome){
+                    case 'Segunda-Feira':
+                        $('#segunda-id').val(dia.id);
+                        $('#segunda-intervalo').val(dia.intervaloSessaoInMinutes);
+                        $('#segunda-duracao').val(dia.duracaoSessaoInMinutes);
+                        $('#segunda-inicio').val(dia.inicio);
+                        $('#segunda-fim').val(dia.fim);
+                        $('#segunda-feira').prop('checked', true);
+                        $('#segunda-intervalo').prop('disabled', false);
+                        $('#segunda-duracao').prop('disabled', false);
+                        $('#segunda-inicio').prop('disabled', false);
+                        $('#segunda-fim').prop('disabled', false);
+                        break;
+                }
+            }
+
+            $('#modal-configura-agenda').modal('show')
+        })
+    })
+
 }
 
 function configuraAgendaRequest(e) {
@@ -183,6 +216,7 @@ function configuraAgendaRequest(e) {
 
     if ($('#segunda-feira').is(':checked')){
         var segunda = {
+            "id": parseInt($('#segunda-id').val()),
             "nome":"Segunda-Feira",
 			"intervaloSessaoInMinutes": parseInt($('#segunda-intervalo').val()),
 			"duracaoSessaoInMinutes": parseInt($('#segunda-duracao').val()),
