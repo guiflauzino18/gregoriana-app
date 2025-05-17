@@ -3,10 +3,12 @@
     <div class="modal-dialog modal-dialog-centered modal-xl">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Configurar Agenda</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="agenda-card-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Configurar Agenda</h1>
+                <div>Agenda: <span id="agenda-nome"></span> Profissional: <span id="profissional-nome"></span> </div>
+                <button type="button" data-bs-dismiss="modal"><i class="ri-close-large-line"></i></button>
+          </div>
         </div>
-          <span>Agenda: </span> <span>Profissional: </span> 
         <div class="modal-body">
             <form id="form-configura-agenda">
                 <div class="row d-none">
@@ -19,7 +21,7 @@
                         <input class="form-control" id="id-profissional" name="id-profissional" type="number" required readonly>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row d-flex justify-content-center">
                     <!--------------------------------------------------------------------------
                         Segunda-Feira
                     -->
@@ -61,6 +63,18 @@
                             </li>
 
                         </ul>
+                        <div data-dia-id="" class="agenda-horas card-footer">
+                            <ul class="list-group">
+                                <li>
+                                    <a id="segunda-id-hora" class="abreModalConfiguraHorarios" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Horários"><i class="ri-time-fill"></i></a>
+                                </li>
+
+                                <li>
+                                    <a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Anotações"><i class="ri-sticky-note-fill"></i></a>
+                                </li>
+                            </ul>
+                            
+                        </div>
                     </div>
 
                     <!------------------------------------------------------------------------------------------
@@ -332,4 +346,44 @@
       </div>
     </div>
   </div>
+
+<div class="modal fade" data-bs-backdrop="static" id="modal-configura-horarios" tabindex="1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+            <div class="agenda-card-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Configurar Horarios</h1>
+                <button type="button" data-bs-dismiss="modal"><i class="ri-close-large-line"></i></button>
+          </div>
+        </div>
+
+          <!-- Modal de horários -->
+        <div class="modal-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Inicio</th>
+                        <th scope="col">Fim</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id="clone-row-horas" class="d-none">
+                        <td class="InicioHora" ></td>
+                        <td class="FimHora"></td>
+                        <td class="statusHora">
+                            <select class="form-select" name="" id="">
+                            </select>
+                        </td>
+                    </tr>
+                </tbody>
+                </table>
+        </div>
+        <div class="modal-footer">
+            <button onclick="fechaModalHorariosEAbreDias()" class="btn btn-primary">Salvar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 {{end}}

@@ -182,6 +182,11 @@ $(document).ready(() => {
         }
     })
 
+    //adiciona clique do botao 
+    $('.abreModalConfiguraHorarios').on('click', configuraHorarios)
+
+    // Faz request para cadastro do status hora
+    $('#form-cadastro-status-hora').on('submit', cadastroStatusHora)
 })
 
 function cadastroAgenda(e){
@@ -250,8 +255,6 @@ function configuraAgenda(id, idProfissional){
     $('#id-agenda').val(id)
     $('#id-profissional').val(idProfissional)
 
-
-    
     fetch("/agenda/"+id).then ((R) => {
         if (R.status >= 400){
             showLoadingErro("Erro ao carregar dados da agenda.");
@@ -261,6 +264,9 @@ function configuraAgenda(id, idProfissional){
         R.text().then((T) => {
             var agenda = JSON.parse(T)
             console.log(agenda)
+
+            $('#agenda-nome').text(agenda.nome)
+            $('#profissional-nome').text(agenda.NomeProfissional)
 
             for (dia of agenda.dias){
                 switch (dia.nome){
@@ -275,6 +281,8 @@ function configuraAgenda(id, idProfissional){
                         $('#segunda-duracao').prop('disabled', false);
                         $('#segunda-inicio').prop('disabled', false);
                         $('#segunda-fim').prop('disabled', false);
+
+                        $('#segunda-id-hora').attr('data-segunda-id', dia.id)
                         break;
 
                     case 'Terça-Feira':
@@ -472,5 +480,136 @@ function configuraAgendaRequest(e) {
         }
     })
     
+
+}
+
+function configuraHorarios(e){
+    showLoading
+    diaId = e.currentTarget.dataset.segundaId;
+
+    fetch("/horas/"+id).then((R) => {
+        if (R.status >= 400){
+            showLoadingErro("Erro ao buscar horas do dia")
+        }else {
+            R.text().then((T) => {
+                var horas = JSON.parse(T)
+                console.log(horas)
+
+                //Busca status das horas cadastrados no sistema
+                fetch("agenda/horas/status").then((S) => {
+                    if (S.status == 200){
+                        S.text().then((U) => {
+                            var statusList = JSON.parse(U)
+
+                        $('.clonado').remove()
+
+                        horas.forEach((hora) => {
+                            $row = $('#clone-row-horas').clone(true)
+                            $parent = $('#clone-row-horas').parent()
+
+                            // Cria options do select com status cadastrados
+                            $select = $row.find(".form-select")
+
+                            $select.attr('data-hora-id', hora.id)
+
+                            statusList.forEach((status) => {
+
+                                $select.html(`${$select.html()} <option value="${status.id}">${status.nome}</option>`)
+                            })
+
+                            $select.on('change', alteraStatusHoraRequest)
+
+                            //Seleciona status da hora no select
+                            $select.val(hora.statusHora.id)
+
+                            $row.removeAttr('id')
+                            $row.removeClass('d-none')
+                            $row.addClass("clonado")
+                            $row.attr("data-id-hora", hora.id)
+                            $row.find(".idHora").html(hora.id)
+                            $row.find(".InicioHora").html(hora.inicio)
+                            $row.find(".FimHora").html(hora.fim)
+                            
+
+                            $parent.append($row)
+                        })
+
+
+                        $('#modal-configura-agenda').modal('hide')
+                        $('#modal-configura-horarios').modal('show')
+
+                        })
+                    }
+                })
+            })
+        }
+    })
+
+}
+
+function fechaModalHorariosEAbreDias(){
+    $('#modal-configura-horarios').modal('hide')
+    $('#modal-configura-agenda').modal('show')
+}
+
+function cadastroStatusHora(e){
+    e.preventDefault();
+
+    showLoading();
+
+    const body = {
+        "nome": $('#status-hora-nome').val(),
+    }
+
+    fetch("/status/hora", {
+        method: "POST",
+        headers: {
+            "Content-Type": "x-www-form-urlencoded"
+        },
+        body: JSON.stringify(body)
+        
+    }).then((R) => {
+        if (R.status == 409){
+            showLoadingErro("Status já existe");
+        }else if (R.status >= 400){
+            showLoadingErro("Erro no cadastro do status");
+        }else {
+            R.text().then((T) => {
+                showLoadingSucesso("Status cadastrado com sucesso")
+                $('#modal-cadastro-status-hora').modal('dispose');
+            })
+        }
+    })
+
+
+}
+
+function alteraStatusHoraRequest(e){
+
+    
+    idStatus = e.target.value
+    idHora = e.target.dataset.horaId
+
+    var body = {
+        "idHora": idHora,
+        "idStatusHora": idStatus,
+    }
+
+    fetch("/agenda/hora/status", {
+        method: "PUT",
+        headers: {
+            "Content-Type": "x-www-form-urlencoded"
+        },
+        body: JSON.stringify(body)
+
+    }).then((R) => {
+        if (R.status != 200){
+            showAlert("Erro ao alterar status da hora", "danger")
+        }else {
+            showAlert("Status alterado", "success")
+        }
+    })
+
+    console.log(body)
 
 }

@@ -86,7 +86,17 @@ function hideConfirma(){
 }
 
 
-// Controle de histórico de navegação
-var navegacao = []
+function showAlert(message, type){
 
+    hideAlert();
 
+    $('#alerta').addClass(`alert-${type}`);
+    $('#alerta-message').text(message)
+
+    $('#alerta').removeClass(`d-none`);
+
+}
+
+function hideAlert(){
+    $('#alerta').addClass(`d-none`)
+}

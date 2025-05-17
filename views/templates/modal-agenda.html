@@ -121,4 +121,45 @@
 
     </div>
 </div>
+
+<!-- Modal cadastro de status dos horarios -->
+ <div class="modal fade modal-xl" id="modal-cadastro-status-hora">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <!-- Modal header -->
+            <div class="modal-header">
+                <h2 id="modal-titulo" class="cor-titulo">Novo Status</h2>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" arua-label="Close" aria-hidden="true"></button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <div>
+                    <form id="form-cadastro-status-hora" class="needs-validation">
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-md-4">
+                                <label for="status-hora-nome" class="form-label">Nome</label>
+                                <input type="text" class="form-control limpar-campo" id="status-hora-nome" required>
+                                <div class="valid-feedback">
+                                    Muito bom!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Confira este campo!
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-primary">Salvar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- Modal Footer -->
+        </div>
+
+    </div>
+</div>
 {{end}}

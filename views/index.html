@@ -19,10 +19,11 @@
         <div class="row page-title">
             <h2 class="cor-titulo">Página Inicial</h2>
             <p>Bem-vindo ao Gregorian, {{.Usuario.Nome}}!</p>
+            
+            <!-- Navegação -->
+            {{template "navegacao" .Navegacao}}
         </div>
 
-        <!-- Navegação -->
-        {{template "navegacao" .Navegacao}}
 
         <!-- Cards -->
         <section class="section">

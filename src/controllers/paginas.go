@@ -60,11 +60,20 @@ func CarregarHome(w http.ResponseWriter, r *http.Request) {
 		utils.ExecutarTemplate(w, "index.html", struct {
 			Usuario   *dto.UsuarioResponseDTO
 			URL       string
-			Navegacao []string
+			Navegacao struct {
+				Itens  []string
+				Active string
+			}
 		}{
-			Usuario:   &usuario,
-			URL:       "/home",
-			Navegacao: config.Navegacao,
+			Usuario: &usuario,
+			URL:     "/home",
+			Navegacao: struct {
+				Itens  []string
+				Active string
+			}{
+				Itens:  config.Navegacao,
+				Active: "home",
+			},
 		})
 	}
 }
@@ -77,11 +86,20 @@ func CarregarConfiguracao(w http.ResponseWriter, r *http.Request) {
 	utils.ExecutarTemplate(w, "configuracao.html", struct {
 		Usuario   *dto.UsuarioResponseDTO
 		URL       string
-		Navegacao []string
+		Navegacao struct {
+			Itens  []string
+			Active string
+		}
 	}{
-		Usuario:   &usuario,
-		URL:       "/configuracao",
-		Navegacao: config.Navegacao,
+		Usuario: &usuario,
+		URL:     "/configuracao",
+		Navegacao: struct {
+			Itens  []string
+			Active string
+		}{
+			Itens:  config.Navegacao,
+			Active: "configuracao",
+		},
 	})
 }
 
@@ -131,12 +149,21 @@ func CarregarUsuarios(w http.ResponseWriter, r *http.Request) {
 		Usuarios  *dto.Pageable[dto.UsuariosResponseDTO]
 		Usuario   *dto.UsuarioResponseDTO
 		URL       string
-		Navegacao []string
+		Navegacao struct {
+			Itens  []string
+			Active string
+		}
 	}{
-		Usuarios:  &usuarios,
-		Usuario:   &usuario,
-		URL:       "/usuarios",
-		Navegacao: config.Navegacao,
+		Usuarios: &usuarios,
+		Usuario:  &usuario,
+		URL:      "/usuarios",
+		Navegacao: struct {
+			Itens  []string
+			Active string
+		}{
+			Itens:  config.Navegacao,
+			Active: "usuarios",
+		},
 	})
 }
 
@@ -206,12 +233,21 @@ func CarregarProfissional(w http.ResponseWriter, r *http.Request) {
 		Profissional *dto.Pageable[dto.ProfissionalResponseDTO]
 		Usuario      *dto.UsuarioResponseDTO
 		URL          string
-		Navegacao    []string
+		Navegacao    struct {
+			Itens  []string
+			Active string
+		}
 	}{
 		Profissional: &profissional,
 		Usuario:      &usuario,
 		URL:          "/profissional",
-		Navegacao:    config.Navegacao,
+		Navegacao: struct {
+			Itens  []string
+			Active string
+		}{
+			Itens:  config.Navegacao,
+			Active: "profissional",
+		},
 	})
 
 }
@@ -238,20 +274,27 @@ func CarregaAgenda(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	fmt.Println(agendas)
-
 	config.Navegacao = criaNavegacao("agenda")
 
 	utils.ExecutarTemplate(w, "agenda.html", struct {
 		Agendas   *dto.Pageable[dto.AgendaResponseDTO]
 		Usuario   *dto.UsuarioResponseDTO
 		URL       string
-		Navegacao []string
+		Navegacao struct {
+			Itens  []string
+			Active string
+		}
 	}{
-		Agendas:   &agendas,
-		Usuario:   &usuario,
-		URL:       "/agenda",
-		Navegacao: config.Navegacao,
+		Agendas: &agendas,
+		Usuario: &usuario,
+		URL:     "/agenda",
+		Navegacao: struct {
+			Itens  []string
+			Active string
+		}{
+			Itens:  config.Navegacao,
+			Active: "agenda",
+		},
 	})
 
 }
