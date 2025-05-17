@@ -236,3 +236,27 @@ func AlteraStatusHoras(w http.ResponseWriter, r *http.Request) {
 	respostas.JSON(w, response.StatusCode, nil)
 
 }
+
+func DeletaStatusHoras(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	id := params["id"]
+
+	url := fmt.Sprintf("%s/api/admin/agenda/horas/status/%s", config.APIURL, id)
+
+	response, erro := request.RequestComAutenticacao(r, http.MethodDelete, url, nil)
+	if erro != nil {
+		respostas.JSON(w, http.StatusInternalServerError, respostas.ErroAPI{Erro: fmt.Errorf("Erro na requisição: %v", erro).Error()})
+		return
+	}
+
+	defer response.Body.Close()
+
+	body, _ := io.ReadAll(response.Body)
+
+	if response.StatusCode >= 400 {
+		respostas.JSON(w, response.StatusCode, respostas.ErroAPI{Erro: fmt.Errorf("Erro: %s", bytes.NewBuffer(body)).Error()})
+		return
+	}
+
+	respostas.JSON(w, response.StatusCode, body)
+}

@@ -187,6 +187,9 @@ $(document).ready(() => {
 
     // Faz request para cadastro do status hora
     $('#form-cadastro-status-hora').on('submit', cadastroStatusHora)
+
+    //Busca status das horas
+    $('#modal-lista-status-hora').on("show.bs.modal", listaStatusHora)
 })
 
 function cadastroAgenda(e){
@@ -612,4 +615,79 @@ function alteraStatusHoraRequest(e){
 
     console.log(body)
 
+}
+
+function listaStatusHora(){
+
+    showLoading();
+    fetch("/agenda/horas/status").then((R) => {
+        if (R.status >= 400){
+            showLoadingErro("Erro ao buscar status")
+        }else {
+
+            R.text().then((T) => {
+
+                var statusList = JSON.parse(T)
+
+                $('.clonado').remove();
+
+                statusList.forEach((status) => {
+                    
+                    $tr = $('#clone-row-status-hora').clone(true);
+                    console.log($('#clone-row-status-hora'))
+                    $tbody = $('#clone-row-status-hora').parent();
+
+                    $tr.find('.id-status-hora').text(status.id);
+                    $tr.find('.status-hora').text(status.nome);
+                    $tr.find('ul').attr('data-status-id', status.id)
+
+                    $tr.find('.dropdown-item').on('click', (e) => {
+                        acao = e.target.dataset.acao
+                        id = e.target.parentNode.parentNode.dataset.statusId
+
+                        switch(acao){
+                            case 'editar':
+                                console.log('Editar')
+                                break;
+
+                            case 'excluir':
+                                excluirStatusHora(id)
+                                break;
+                        }
+                    })
+
+                    $tr.removeClass('d-none');
+                    $tr.addClass('clonado')
+
+                    $tbody.append($tr)
+
+                    hideLoading();
+                })
+
+            })
+
+
+        }
+    })
+
+}
+
+function excluirStatusHora(id){
+    
+    showConfirma("Deseja excluir este status?", () => {
+        fetch("/agenda/hora/status/"+id, {
+            method: "DELETE",
+
+        }).then((R) => {
+            showLoading();
+            if (R.status >= 400){
+                showLoadingErro("Erro ao excluir status")
+            }else {
+                R.text((T) => {
+
+                    showLoadingSucesso(T.erro)
+                })
+            }
+        })
+    })
 }

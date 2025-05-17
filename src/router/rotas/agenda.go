@@ -66,4 +66,10 @@ var rotaStatusHora = []Rota{
 		Funcao:             controllers.AlteraStatusHoras,
 		RequerAutenticacao: true,
 	},
+	{
+		URI:                "/agenda/hora/status/{id}",
+		Metodo:             http.MethodDelete,
+		Funcao:             controllers.DeletaStatusHoras,
+		RequerAutenticacao: true,
+	},
 }
