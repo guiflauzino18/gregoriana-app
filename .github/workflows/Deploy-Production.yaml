@@ -29,11 +29,11 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          IMAGE=${{ secrets.DOCKERHUB_USERNAME }}/gregorian-app:pr-${{ github.event.pull_request.number }}
-          docker build -t $IMAGE -f build/Dockerfile .
+          
+          docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/gregorian-app:v-${{ github.event.pull_request.number }} -f build/Dockerfile .
           docker push $IMAGE
 
       - name: Atualizar a tag "latest"
         run: |
-          docker tag $IMAGE guiflauzino18/gregorian-app:latest
+          docker tag ${{ secrets.DOCKERHUB_USERNAME }}/gregorian-app:v-${{ github.event.pull_request.number }} guiflauzino18/gregorian-app:latest
           docker push guiflauzino18/gregorian-app:latest
