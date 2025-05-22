@@ -31,7 +31,7 @@ jobs:
         run: |
           
           docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/gregorian-app:v-${{ github.event.pull_request.number }} -f build/Dockerfile .
-          docker push $IMAGE
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/gregorian-app:v-${{ github.event.pull_request.number }}
 
       - name: Atualizar a tag "latest"
         run: |
