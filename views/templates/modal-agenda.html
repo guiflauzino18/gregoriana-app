@@ -121,4 +121,135 @@
 
     </div>
 </div>
+
+<!-- Modal cadastro de status dos horarios -->
+ <div class="modal fade modal-xl" id="modal-cadastro-status-hora">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <!-- Modal header -->
+            <div class="modal-header">
+                <h2 id="modal-titulo" class="cor-titulo">Novo Status</h2>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" arua-label="Close" aria-hidden="true"></button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <div>
+                    <form id="form-cadastro-status-hora" class="needs-validation">
+                        <div class="row d-flex justify-content-center">
+                            <div class="col-md-4">
+                                <label for="status-hora-nome" class="form-label">Nome</label>
+                                <input type="text" class="form-control limpar-campo" id="status-hora-nome" required>
+                                <div class="valid-feedback">
+                                    Muito bom!
+                                </div>
+                                <div class="invalid-feedback">
+                                    Confira este campo!
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                                <button type="submit" class="btn btn-primary">Salvar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- Modal Footer -->
+        </div>
+
+    </div>
+</div>
+
+<!-- Modal lista status de horario -->
+ <div class="modal fade modal-xl" id="modal-lista-status-hora">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <!-- Modal header -->
+            <div class="modal-header">
+                <h2 id="modal-titulo" class="cor-titulo">Status dos horários</h2>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" arua-label="Close" aria-hidden="true"></button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Ação</th>
+                        </tr>
+                    </thead>
+                        <tbody>
+                            <tr id="clone-row-status-hora" class="d-none">
+                                <td class="id-status-hora"></td>
+                                <td class="status-hora"></td>
+                                <td>
+                                    <a class="a" data-bs-toggle="dropdown" href="#"><i class="ri-more-2-line"></i></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" data-acao="editar" href="#">Editar</a></li>
+                                        <li><a class="dropdown-item" data-acao="excluir" href="#">Excluir</a></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                </table>
+            </div>
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button class="btn btn-primary">Salvar</button>
+                <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modal-cadastro-status-hora">Novo Status</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- Modal lista status de dias -->
+ <div class="modal fade modal-xl" id="modal-lista-status-dia">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <!-- Modal header -->
+            <div class="modal-header">
+                <h2 id="modal-titulo" class="cor-titulo">Status dos dias</h2>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" arua-label="Close" aria-hidden="true"></button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="modal-body">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Ação</th>
+                        </tr>
+                    </thead>
+                        <tbody>
+                            <tr id="clone-row-status-hora" class="d-none">
+                                <td class="id-status-hora"></td>
+                                <td class="status-hora"></td>
+                                <td>
+                                    <a class="a" data-bs-toggle="dropdown" href="#"><i class="ri-more-2-line"></i></a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" data-acao="editar" href="#">Editar</a></li>
+                                        <li><a class="dropdown-item" data-acao="excluir" href="#">Excluir</a></li>
+                                    </ul>
+                                </td>
+                            </tr>
+                        </tbody>
+                </table>
+            </div>
+            <!-- Modal Footer -->
+            <div class="modal-footer">
+                <button class="btn btn-primary">Salvar</button>
+                <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modal-cadastro-status-hora">Novo Status</button>
+            </div>
+        </div>
+
+    </div>
+</div>
 {{end}}

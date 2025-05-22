@@ -128,7 +128,7 @@ function editarUsuarioRequest(e){
         "telefone": $('#us-telefone').val(),
         "endereco": $('#us-endereco').val(),
         "role": $('#us-role').val(),
-        "status": $('#us-status').is(":checked") ? 1 : 0,
+        "status": $('#us-status').is(":checked") ? "ATIVO" : "INATIVO",
         "alteraNextLogon": false,
     }
 
@@ -176,7 +176,7 @@ function editarUsuario(id){
                 $('#us-telefone').val(u.telefone)
                 $('#us-email').val(u.email)
                 $('#us-endereco').val(u.endereco)
-                statusU = u.status == 1 ? true : false
+                statusU = u.status == "ATIVO" ? true : false
                 $('#us-status').prop("checked", statusU)
                 $('#us-role').val(u.role)
                 $('#us-login').val(u.login)

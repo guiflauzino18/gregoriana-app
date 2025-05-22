@@ -3,10 +3,12 @@
     <div class="modal-dialog modal-dialog-centered modal-xl">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Configurar Agenda</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="agenda-card-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Configurar Agenda</h1>
+                <div>Agenda: <span id="agenda-nome"></span> Profissional: <span id="profissional-nome"></span> </div>
+                <button type="button" data-bs-dismiss="modal"><i class="ri-close-large-line"></i></button>
+          </div>
         </div>
-          <span>Agenda: </span> <span>Profissional: </span> 
         <div class="modal-body">
             <form id="form-configura-agenda">
                 <div class="row d-none">
@@ -19,12 +21,16 @@
                         <input class="form-control" id="id-profissional" name="id-profissional" type="number" required readonly>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row d-flex justify-content-center">
+                    <!--------------------------------------------------------------------------
+                        Segunda-Feira
+                    -->
                     <div class="card col-lg-3 m-3">
                         <div class="card-header">
                             
                             <div class="input-group mb-3">
-                                <label class="fs-5" for="segunda-feira">Segunda-feira</label>
+                                <input id="segunda-id" class="d-none" type="number">
+                                <label class="fs-5" for="segunda-feira">Segunda-Feira</label>
                                 <input id="segunda-feira" class="ms-3 dia" type="checkbox">
                             </div>
                         </div>
@@ -57,13 +63,29 @@
                             </li>
 
                         </ul>
+                        <div data-dia-id="" class="agenda-horas card-footer">
+                            <ul class="list-group">
+                                <li>
+                                    <a id="segunda-id-hora" class="abreModalConfiguraHorarios" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Horários"><i class="ri-time-fill"></i></a>
+                                </li>
+
+                                <li>
+                                    <a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Anotações"><i class="ri-sticky-note-fill"></i></a>
+                                </li>
+                            </ul>
+                            
+                        </div>
                     </div>
 
+                    <!------------------------------------------------------------------------------------------
+                        Terça-Feira
+                    -->
                     <div class="card col-lg-3 m-3">
                         <div class="card-header">
                             
                             <div class="input-group mb-3">
-                                <label class="fs-5" for="terca-feira">Terça-feira</label>
+                                <input id="terca-id" type="number" class="d-none" readonly>
+                                <label class="fs-5" for="terca-feira">Terça-Feira</label>
                                 <input id="terca-feira" class="ms-3 dia" type="checkbox">
                             </div>
                         </div>
@@ -96,6 +118,293 @@
                             </li>
 
                         </ul>
+                        <div data-dia-id="" class="agenda-horas card-footer">
+                            <ul class="list-group">
+                                <li>
+                                    <a id="terca-id-hora" class="abreModalConfiguraHorarios" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Horários"><i class="ri-time-fill"></i></a>
+                                </li>
+
+                                <li>
+                                    <a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Anotações"><i class="ri-sticky-note-fill"></i></a>
+                                </li>
+                            </ul>
+                            
+                        </div>
+                    </div>
+
+                    <!------------------------------------------------------------------------------------------
+                        Quarta-Feira
+                    -->
+                    <div class="card col-lg-3 m-3">
+                        <div class="card-header">
+                            
+                            <div class="input-group mb-3">
+                                <input id="quarta-id" type="number" class="d-none" readonly>
+                                <label class="fs-5" for="quarta-feira">Quarta-Feira</label>
+                                <input id="quarta-feira" class="ms-3 dia" type="checkbox">
+                            </div>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <div class="input-group mb-3">
+                                    <label class="form-label" for="intervalo-sessao">Intervalo entre sessão ou consulta</label>
+                                    <input class="form-control" id="quarta-intervalo" type="number" disabled>
+                                    <!-- <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
+                                    <span class="input-group-text" id="basic-addon2">minutos</span>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="input-group mb-3">
+                                    <label class="form-label" for="intervalo-sessao">Duração da sessão ou consulta</label>
+                                    <input class="form-control" id="quarta-duracao" type="number" disabled>
+                                    <!-- <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
+                                    <span class="input-group-text" id="basic-addon2">minutos</span>
+                                  </div>
+                            </li>
+                            
+                            <li class="list-group-item">
+                                <label class="form-label" for="intervalo-sessao">Hora de início</label>
+                                <input class="form-control" id="quarta-inicio" type="time" disabled>
+                            </li>
+                            
+                            <li class="list-group-item">
+                                <label class="form-label" for="intervalo-sessao">Hora de Término</label>
+                                <input class="form-control" id="quarta-fim" type="time" disabled>
+                            </li>
+
+                        </ul>
+                        <div data-dia-id="" class="agenda-horas card-footer">
+                            <ul class="list-group">
+                                <li>
+                                    <a id="quarta-id-hora" class="abreModalConfiguraHorarios" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Horários"><i class="ri-time-fill"></i></a>
+                                </li>
+
+                                <li>
+                                    <a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Anotações"><i class="ri-sticky-note-fill"></i></a>
+                                </li>
+                            </ul>
+                            
+                        </div>
+                    </div>
+
+                    <!------------------------------------------------------------------------------------------
+                        Quinta-Feira
+                    -->
+                    <div class="card col-lg-3 m-3">
+                        <div class="card-header">
+                            
+                            <div class="input-group mb-3">
+                                <input id="quinta-id" type="number" class="d-none" readonly>
+                                <label class="fs-5" for="quinta-feira">Quinta-Feira</label>
+                                <input id="quinta-feira" class="ms-3 dia" type="checkbox">
+                            </div>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <div class="input-group mb-3">
+                                    <label class="form-label" for="intervalo-sessao">Intervalo entre sessão ou consulta</label>
+                                    <input class="form-control" id="quinta-intervalo" type="number" disabled>
+                                    <!-- <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
+                                    <span class="input-group-text" id="basic-addon2">minutos</span>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="input-group mb-3">
+                                    <label class="form-label" for="intervalo-sessao">Duração da sessão ou consulta</label>
+                                    <input class="form-control" id="quinta-duracao" type="number" disabled>
+                                    <!-- <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
+                                    <span class="input-group-text" id="basic-addon2">minutos</span>
+                                  </div>
+                            </li>
+                            
+                            <li class="list-group-item">
+                                <label class="form-label" for="intervalo-sessao">Hora de início</label>
+                                <input class="form-control" id="quinta-inicio" type="time" disabled>
+                            </li>
+                            
+                            <li class="list-group-item">
+                                <label class="form-label" for="intervalo-sessao">Hora de Término</label>
+                                <input class="form-control" id="quinta-fim" type="time" disabled>
+                            </li>
+
+                        </ul>
+                        <div data-dia-id="" class="agenda-horas card-footer">
+                            <ul class="list-group">
+                                <li>
+                                    <a id="quinta-id-hora" class="abreModalConfiguraHorarios" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Horários"><i class="ri-time-fill"></i></a>
+                                </li>
+
+                                <li>
+                                    <a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Anotações"><i class="ri-sticky-note-fill"></i></a>
+                                </li>
+                            </ul>
+                            
+                        </div>
+                    </div>
+
+                    <!------------------------------------------------------------------------------------------
+                        Sexta-Feira
+                    -->
+                    <div class="card col-lg-3 m-3">
+                        <div class="card-header">
+                            
+                            <div class="input-group mb-3">
+                                <input id="sexta-id" type="number" class="d-none" readonly>
+                                <label class="fs-5" for="sexta-feira">Sexta-Feira</label>
+                                <input id="sexta-feira" class="ms-3 dia" type="checkbox">
+                            </div>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <div class="input-group mb-3">
+                                    <label class="form-label" for="intervalo-sessao">Intervalo entre sessão ou consulta</label>
+                                    <input class="form-control" id="sexta-intervalo" type="number" disabled>
+                                    <!-- <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
+                                    <span class="input-group-text" id="basic-addon2">minutos</span>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="input-group mb-3">
+                                    <label class="form-label" for="intervalo-sessao">Duração da sessão ou consulta</label>
+                                    <input class="form-control" id="sexta-duracao" type="number" disabled>
+                                    <!-- <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
+                                    <span class="input-group-text" id="basic-addon2">minutos</span>
+                                  </div>
+                            </li>
+                            
+                            <li class="list-group-item">
+                                <label class="form-label" for="intervalo-sessao">Hora de início</label>
+                                <input class="form-control" id="sexta-inicio" type="time" disabled>
+                            </li>
+                            
+                            <li class="list-group-item">
+                                <label class="form-label" for="intervalo-sessao">Hora de Término</label>
+                                <input class="form-control" id="sexta-fim" type="time" disabled>
+                            </li>
+
+                        </ul>
+                        <div data-dia-id="" class="agenda-horas card-footer">
+                            <ul class="list-group">
+                                <li>
+                                    <a id="sexta-id-hora" class="abreModalConfiguraHorarios" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Horários"><i class="ri-time-fill"></i></a>
+                                </li>
+
+                                <li>
+                                    <a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Anotações"><i class="ri-sticky-note-fill"></i></a>
+                                </li>
+                            </ul>
+                            
+                        </div>
+                    </div>
+
+                    <!------------------------------------------------------------------------------------------
+                        Sábado
+                    -->
+                    <div class="card col-lg-3 m-3">
+                        <div class="card-header">
+                            
+                            <div class="input-group mb-3">
+                                <input id="sabado-id" type="number" class="d-none" readonly>
+                                <label class="fs-5" for="sabado">Sábado</label>
+                                <input id="sabado" class="ms-3 dia" type="checkbox">
+                            </div>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <div class="input-group mb-3">
+                                    <label class="form-label" for="intervalo-sessao">Intervalo entre sessão ou consulta</label>
+                                    <input class="form-control" id="sabado-intervalo" type="number" disabled>
+                                    <!-- <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
+                                    <span class="input-group-text" id="basic-addon2">minutos</span>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="input-group mb-3">
+                                    <label class="form-label" for="intervalo-sessao">Duração da sessão ou consulta</label>
+                                    <input class="form-control" id="sabado-duracao" type="number" disabled>
+                                    <!-- <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
+                                    <span class="input-group-text" id="basic-addon2">minutos</span>
+                                  </div>
+                            </li>
+                            
+                            <li class="list-group-item">
+                                <label class="form-label" for="intervalo-sessao">Hora de início</label>
+                                <input class="form-control" id="sabado-inicio" type="time" disabled>
+                            </li>
+                            
+                            <li class="list-group-item">
+                                <label class="form-label" for="intervalo-sessao">Hora de Término</label>
+                                <input class="form-control" id="sabado-fim" type="time" disabled>
+                            </li>
+
+                        </ul>
+                        <div data-dia-id="" class="agenda-horas card-footer">
+                            <ul class="list-group">
+                                <li>
+                                    <a id="sabado-id-hora" class="abreModalConfiguraHorarios" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Horários"><i class="ri-time-fill"></i></a>
+                                </li>
+
+                                <li>
+                                    <a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Anotações"><i class="ri-sticky-note-fill"></i></a>
+                                </li>
+                            </ul>
+                            
+                        </div>
+                    </div>
+
+                    <!------------------------------------------------------------------------------------------
+                        Domingo-Feira
+                    -->
+                    <div class="card col-lg-3 m-3">
+                        <div class="card-header">
+                            
+                            <div class="input-group mb-3">
+                                <input id="domingo-id" type="number" class="d-none" readonly>
+                                <label class="fs-5" for="domingo">Domingo</label>
+                                <input id="domingo" class="ms-3 dia" type="checkbox">
+                            </div>
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <div class="input-group mb-3">
+                                    <label class="form-label" for="intervalo-sessao">Intervalo entre sessão ou consulta</label>
+                                    <input class="form-control" id="domingo-intervalo" type="number" disabled>
+                                    <!-- <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
+                                    <span class="input-group-text" id="basic-addon2">minutos</span>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="input-group mb-3">
+                                    <label class="form-label" for="intervalo-sessao">Duração da sessão ou consulta</label>
+                                    <input class="form-control" id="domingo-duracao" type="number" disabled>
+                                    <!-- <input type="text" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="basic-addon2"> -->
+                                    <span class="input-group-text" id="basic-addon2">minutos</span>
+                                  </div>
+                            </li>
+                            
+                            <li class="list-group-item">
+                                <label class="form-label" for="intervalo-sessao">Hora de início</label>
+                                <input class="form-control" id="domingo-inicio" type="time" disabled>
+                            </li>
+                            
+                            <li class="list-group-item">
+                                <label class="form-label" for="intervalo-sessao">Hora de Término</label>
+                                <input class="form-control" id="domingo-fim" type="time" disabled>
+                            </li>
+
+                        </ul>
+                        <div data-dia-id="" class="agenda-horas card-footer">
+                            <ul class="list-group">
+                                <li>
+                                    <a id="quarta-id-hora" class="abreModalConfiguraHorarios" href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Horários"><i class="ri-time-fill"></i></a>
+                                </li>
+
+                                <li>
+                                    <a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Anotações"><i class="ri-sticky-note-fill"></i></a>
+                                </li>
+                            </ul>
+                            
+                        </div>
                     </div>
                                        
                      
@@ -109,4 +418,46 @@
       </div>
     </div>
   </div>
+
+  <!-- Modal que configura horarios -->
+<div class="modal fade" data-bs-backdrop="static" id="modal-configura-horarios" tabindex="1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+            <div class="agenda-card-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Configurar Horarios</h1>
+                <button type="button" data-bs-dismiss="modal"><i class="ri-close-large-line"></i></button>
+          </div>
+        </div>
+
+          <!-- Modal de horários -->
+        <div class="modal-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Inicio</th>
+                        <th scope="col">Fim</th>
+                        <th scope="col">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id="clone-row-horas" class="d-none">
+                        <td class="InicioHora" ></td>
+                        <td class="FimHora"></td>
+                        <td class="statusHora">
+                            <select class="form-select" name="" id="">
+                            </select>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="modal-footer">
+            <button onclick="fechaModalHorariosEAbreDias()" class="btn btn-primary">Salvar</button>
+            <button  class="btn btn-outline-primary">Replicar horários</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 {{end}}

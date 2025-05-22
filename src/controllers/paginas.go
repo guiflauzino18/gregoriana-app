@@ -54,12 +54,26 @@ func CarregarHome(w http.ResponseWriter, r *http.Request) {
 
 	} else {
 
+		config.Navegacao = []string{}
+		config.Navegacao = criaNavegacao("home")
+
 		utils.ExecutarTemplate(w, "index.html", struct {
-			Usuario *dto.UsuarioResponseDTO
-			URL     string
+			Usuario   *dto.UsuarioResponseDTO
+			URL       string
+			Navegacao struct {
+				Itens  []string
+				Active string
+			}
 		}{
 			Usuario: &usuario,
 			URL:     "/home",
+			Navegacao: struct {
+				Itens  []string
+				Active string
+			}{
+				Itens:  config.Navegacao,
+				Active: "home",
+			},
 		})
 	}
 }
@@ -67,12 +81,25 @@ func CarregarHome(w http.ResponseWriter, r *http.Request) {
 // CarregarConfiguracao carrega tela de Configuracao
 func CarregarConfiguracao(w http.ResponseWriter, r *http.Request) {
 
+	config.Navegacao = criaNavegacao("configuracao")
+
 	utils.ExecutarTemplate(w, "configuracao.html", struct {
-		Usuario *dto.UsuarioResponseDTO
-		URL     string
+		Usuario   *dto.UsuarioResponseDTO
+		URL       string
+		Navegacao struct {
+			Itens  []string
+			Active string
+		}
 	}{
 		Usuario: &usuario,
 		URL:     "/configuracao",
+		Navegacao: struct {
+			Itens  []string
+			Active string
+		}{
+			Itens:  config.Navegacao,
+			Active: "configuracao",
+		},
 	})
 }
 
@@ -105,14 +132,38 @@ func CarregarUsuarios(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	existe := false
+
+	for _, pagina := range config.Navegacao {
+		if pagina == "usuarios" {
+			existe = true
+		}
+
+	}
+
+	if !existe {
+		config.Navegacao = append(config.Navegacao, "usuarios")
+	}
+
 	utils.ExecutarTemplate(w, "usuarios.html", struct {
-		Usuarios *dto.Pageable[dto.UsuariosResponseDTO]
-		Usuario  *dto.UsuarioResponseDTO
-		URL      string
+		Usuarios  *dto.Pageable[dto.UsuariosResponseDTO]
+		Usuario   *dto.UsuarioResponseDTO
+		URL       string
+		Navegacao struct {
+			Itens  []string
+			Active string
+		}
 	}{
 		Usuarios: &usuarios,
 		Usuario:  &usuario,
 		URL:      "/usuarios",
+		Navegacao: struct {
+			Itens  []string
+			Active string
+		}{
+			Itens:  config.Navegacao,
+			Active: "usuarios",
+		},
 	})
 }
 
@@ -176,14 +227,27 @@ func CarregarProfissional(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	config.Navegacao = criaNavegacao("profissional")
+
 	utils.ExecutarTemplate(w, "profissional.html", struct {
 		Profissional *dto.Pageable[dto.ProfissionalResponseDTO]
 		Usuario      *dto.UsuarioResponseDTO
 		URL          string
+		Navegacao    struct {
+			Itens  []string
+			Active string
+		}
 	}{
 		Profissional: &profissional,
 		Usuario:      &usuario,
 		URL:          "/profissional",
+		Navegacao: struct {
+			Itens  []string
+			Active string
+		}{
+			Itens:  config.Navegacao,
+			Active: "profissional",
+		},
 	})
 
 }
@@ -210,16 +274,27 @@ func CarregaAgenda(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	fmt.Println(agendas)
+	config.Navegacao = criaNavegacao("agenda")
 
 	utils.ExecutarTemplate(w, "agenda.html", struct {
-		Agendas *dto.Pageable[dto.AgendaResponseDTO]
-		Usuario *dto.UsuarioResponseDTO
-		URL     string
+		Agendas   *dto.Pageable[dto.AgendaResponseDTO]
+		Usuario   *dto.UsuarioResponseDTO
+		URL       string
+		Navegacao struct {
+			Itens  []string
+			Active string
+		}
 	}{
 		Agendas: &agendas,
 		Usuario: &usuario,
 		URL:     "/agenda",
+		Navegacao: struct {
+			Itens  []string
+			Active string
+		}{
+			Itens:  config.Navegacao,
+			Active: "agenda",
+		},
 	})
 
 }
@@ -227,4 +302,29 @@ func CarregaAgenda(w http.ResponseWriter, r *http.Request) {
 func CarregaPerfil(w http.ResponseWriter, r *http.Request) {
 
 	utils.ExecutarTemplate(w, "perfil.html", nil)
+}
+
+func criaNavegacao(url string) []string {
+	existePaginaNoSlice := false
+	var novaNavegacao []string
+
+	for _, pagina := range config.Navegacao {
+
+		fmt.Println(pagina)
+
+		novaNavegacao = append(novaNavegacao, pagina)
+
+		if pagina == url {
+			config.Navegacao = novaNavegacao
+			existePaginaNoSlice = true
+			break
+		}
+
+	}
+
+	if !existePaginaNoSlice {
+		novaNavegacao = append(novaNavegacao, url)
+	}
+
+	return novaNavegacao
 }

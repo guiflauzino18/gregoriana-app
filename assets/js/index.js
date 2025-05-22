@@ -4,6 +4,9 @@ $(document).ready(function(){
     $('.btn-acesse').each(function() {
         $(this).on('click', acessoModulo)
     });
+
+    //Adiciona o home na navegacao
+    
 })
 
 
@@ -13,6 +16,7 @@ function acessoModulo(){
 
     switch ($(this).data('modulo')) {
         case "configuracao":
+            
             window.location.href = "/configuracao"
             break;
         case "faturamento":

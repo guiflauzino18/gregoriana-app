@@ -32,3 +32,18 @@ type Dias struct {
 	Inicio    string `json:"inicio"`
 	Fim       string `json:"fim"`
 }
+
+type HorasRequestDTO struct {
+	ID     int    `json:"id"`
+	Inicio string `json:"inicio"`
+	Fim    string `json:"fim"`
+	Status struct {
+		ID   int    `json:"id"`
+		Nome string `json:"nome"`
+	} `json:"statusHora"`
+}
+
+type StatusHoraResponseDTO struct {
+	ID   int    `json:"id"`
+	Nome string `json:"nome"`
+}

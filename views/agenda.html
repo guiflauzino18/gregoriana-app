@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gregorian - Agenda</title>
     {{template "styles"}}
+    <link href="assets/css/agenda.css" rel="stylesheet">
 </head>
 <body>
     {{template "header" .Usuario}}
@@ -19,9 +20,16 @@
                 <br>
                 <p>Cadastre, edite e visualize Agendas do sistema.</p>
             </div>
-            <div class="row">
-                <button id="abre-modal-agenda" class="btn btn-primary col-md-2 me-1" data-bs-toggle="modal" data-bs-target="#modal-agenda" data-acao="cadastro">Nova Agenda</button>
-                <button class="btn btn-secondary col-md-2 me-1">Status das agendas</button>
+            
+            <!-- Navegação -->
+            {{template "navegacao" .Navegacao}}
+            <div class="btn-group">
+                <button id="abre-modal-agenda" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modal-agenda" data-acao="cadastro">Nova Agenda</button>
+                <button class="btn btn-outline-primary">Status das agendas</button>
+                <button class="btn btn-outline-primary">Status dos dias</button>
+                <button class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modal-lista-status-hora">Status das horários</button>
+                <button class="btn btn-outline-primary">Feriados</button>
+                <button class="btn btn-outline-primary">Fechar dia</button>
             </div>
         </div>
 
@@ -65,6 +73,7 @@
     {{template "modal-loading"}}
     {{template "modal-confirma"}}
     {{template "modal-configura-agenda"}}
+    {{template "alerta"}}
 
     {{template "scripts"}}
     <script src="assets/js/agenda.js"></script>

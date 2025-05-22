@@ -1,0 +1,26 @@
+{{define "navegacao"}}
+<div class="row">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        
+        <ol class="breadcrumb">
+            {{range $item := .Itens}}
+
+            <!-- 
+                Se $item == .Active adiciona a classe active no <li>
+                Se $item != .Active adiciona a tag <a> para ser clicável
+                Se $item == .Active Adiciona Tooltip com mensagem: voce esta aqui
+            -->
+            
+                <li class="breadcrumb-item {{if eq $item $.Active}}active{{end}}" {{if eq $item $.Active}} data-bs-toggle="tooltip" data-bs-placement="right" title="Você está aqui."{{end}} aria-current="page">
+                    {{if ne $item $.Active}}<a href="/{{$item}}">{{$item}}</a>{{end}}
+                    {{if eq $item $.Active}}{{$item}}{{end}}
+                </li>
+                
+            {{end}}
+            
+        </ol>
+    </nav>
+</div>
+{{end}}
+
+

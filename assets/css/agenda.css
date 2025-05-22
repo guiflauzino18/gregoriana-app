@@ -1,0 +1,35 @@
+
+
+.agenda-horas a {
+    text-decoration: none;
+    font-size: 1.8rem;
+    color: #686868;
+}
+
+.agenda-horas a:hover {
+    color: #388E3C;
+    font-size: 1.9rem;
+}
+
+.agenda-horas ul {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.agenda-card-header{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+
+#agenda-nome, #profissional-nome {
+    color: var(--color-primary);
+    
+}
+
+.form-configura-agenda{
+    margin: 0px, auto;
+}

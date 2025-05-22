@@ -6,7 +6,7 @@
     <title>Gregorian - Home</title>
     {{template "styles"}}
 </head>
-<body>
+<body id="home">
     <!-- Header -->
     {{template "header" .Usuario}}
 
@@ -19,7 +19,11 @@
         <div class="row page-title">
             <h2 class="cor-titulo">Página Inicial</h2>
             <p>Bem-vindo ao Gregorian, {{.Usuario.Nome}}!</p>
+            
+            <!-- Navegação -->
+            {{template "navegacao" .Navegacao}}
         </div>
+
 
         <!-- Cards -->
         <section class="section">
