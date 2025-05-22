@@ -38,7 +38,7 @@ type UsuarioResponseDTO struct {
 	Endereco        string     `json:"endereco"`
 	AlteraNextLogon bool       `json:"alteraNextLogon"`
 	Empresa         EmpresaDTO `json:"empresa"`
-	Status          int        `json:"status"`
+	Status          string     `json:"status"`
 	DataRegistro    time.Time  `json:"dataRegistro"`
 	Role            string     `json:"role"`
 }
@@ -52,7 +52,7 @@ type UsuarioEditaDTO struct {
 	Email           string `json:"email"`
 	Endereco        string `json:"endereco"`
 	AlteraNextLogon bool   `json:"alteraNextLogon"`
-	Status          int    `json:"status"`
+	Status          string `json:"status"`
 	Role            string `json:"role"`
 }
 

@@ -1,7 +1,7 @@
 :root{
-    --color-primary: #4CAF50;
+    --color-primary: #39945f;/*  #4CAF50; */
     --color-primary-dark: #388E3C;
-    --color-primary-black: #212121;
+    --color-primary-black: #333; /* #212121; */
     --color-light: #a1f3a4;
     --color-secondary: #BDBDBD;
     --color-text-primary: #212121;
@@ -18,6 +18,10 @@
     --sidebar-larg: 300px;
 
     --modal-bg: #3b3434;
+}
+
+ul {
+    list-style: none;
 }
 
 .alert {
@@ -90,7 +94,7 @@ input:focus{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 30vh;
+    height: 20vh;
 }
 
 .botao{
@@ -144,10 +148,12 @@ section {
     flex-direction: column;
     /* align-items: center; */
     margin: 5px;
+    flex: 1;
+    justify-content: space-between;
 }
 
 main {
-    background-color: #f0f7f0;
+    background-color: #f6fffb;/*#f0f7f0;*/
     padding: 15px;
     flex: 1;
     display: flex;
@@ -157,7 +163,7 @@ main {
 }
 
 .header{
-    background-color: #212121;
+    background-color: #333; /*#212121;*/
     padding: 0px 10px;
     height: 70px;
     padding: 0px 20px;
@@ -184,7 +190,7 @@ main {
 }
 
 .text-principal{
-    color: #212121;
+    color: #333;/* #212121;*/
 }
 
 .text-secundario{
@@ -216,7 +222,7 @@ footer{
     position: fixed;
     top: 0px;
     left: 0;
-    background-color: #212121;
+    background-color: #333; /*#212121;*/
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -295,3 +301,7 @@ footer{
     height: 100px;
 }
 
+.card-header {
+    font-size: 1.4rem;
+    color: var(--color-primary);
+}

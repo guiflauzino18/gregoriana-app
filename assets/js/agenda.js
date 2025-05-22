@@ -182,7 +182,7 @@ $(document).ready(() => {
         }
     })
 
-    //adiciona clique do botao 
+    //Abre modal para configurar horarios do dia.
     $('.abreModalConfiguraHorarios').on('click', configuraHorarios)
 
     // Faz request para cadastro do status hora
@@ -285,7 +285,7 @@ function configuraAgenda(id, idProfissional){
                         $('#segunda-inicio').prop('disabled', false);
                         $('#segunda-fim').prop('disabled', false);
 
-                        $('#segunda-id-hora').attr('data-segunda-id', dia.id)
+                        $('#segunda-id-hora').attr('data-dia-id', dia.id)
                         break;
 
                     case 'Terça-Feira':
@@ -299,6 +299,8 @@ function configuraAgenda(id, idProfissional){
                         $('#terca-duracao').prop('disabled', false);
                         $('#terca-inicio').prop('disabled', false);
                         $('#terca-fim').prop('disabled', false);
+
+                        $('#terca-id-hora').attr('data-dia-id', dia.id)
                         break;
 
                     case 'Quarta-Feira':
@@ -312,6 +314,8 @@ function configuraAgenda(id, idProfissional){
                         $('#quarta-duracao').prop('disabled', false);
                         $('#quarta-inicio').prop('disabled', false);
                         $('#quarta-fim').prop('disabled', false);
+
+                        $('#quarta-id-hora').attr('data-dia-id', dia.id)
                         break;
 
                     case 'Quinta-Feira':
@@ -325,6 +329,8 @@ function configuraAgenda(id, idProfissional){
                         $('#quinta-duracao').prop('disabled', false);
                         $('#quinta-inicio').prop('disabled', false);
                         $('#quinta-fim').prop('disabled', false);
+
+                        $('#quinta-id-hora').attr('data-dia-id', dia.id)
                         break;
 
                     case 'Sexta-Feira':
@@ -338,6 +344,8 @@ function configuraAgenda(id, idProfissional){
                         $('#sexta-duracao').prop('disabled', false);
                         $('#sexta-inicio').prop('disabled', false);
                         $('#sexta-fim').prop('disabled', false);
+
+                        $('#sexta-id-hora').attr('data-dia-id', dia.id)
                         break;
 
                     case 'Sábado':
@@ -351,6 +359,8 @@ function configuraAgenda(id, idProfissional){
                         $('#sabado-duracao').prop('disabled', false);
                         $('#sabado-inicio').prop('disabled', false);
                         $('#sabado-fim').prop('disabled', false);
+
+                        $('#sabado-id-hora').attr('data-dia-id', dia.id)
                         break;
 
                     case 'Domingo':
@@ -364,6 +374,8 @@ function configuraAgenda(id, idProfissional){
                         $('#domingo-duracao').prop('disabled', false);
                         $('#domingo-inicio').prop('disabled', false);
                         $('#domingo-fim').prop('disabled', false);
+
+                        $('#domingo-id-hora').attr('data-dia-id', dia.id)
                         break;
                 }
             }
@@ -486,11 +498,13 @@ function configuraAgendaRequest(e) {
 
 }
 
+//Abre modal para configurar horarios do dia.
 function configuraHorarios(e){
     showLoading
-    diaId = e.currentTarget.dataset.segundaId;
+    console.log(e)
+    diaId = e.currentTarget.dataset.diaId;
 
-    fetch("/horas/"+id).then((R) => {
+    fetch("/horas/"+diaId).then((R) => {
         if (R.status >= 400){
             showLoadingErro("Erro ao buscar horas do dia")
         }else {
